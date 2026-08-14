@@ -17,5 +17,35 @@
             <a href="./products and services.html">PRODUCTS AND SERVICES</a>
         </nav>
     </header>
+    <main>
+        <section>
+            <h1>Inquiry Form</h1>
+            <!--Creation of the form-->
+            <form action="#" method="post">
+                <label for="name" name="name">Your Name:</label><br/>
+                <input type="text" id="name" placeholder="Tell us who you are" required>
+                <br/><br/>
+                <label for="Email" name="Email">Email Address:</label><br/>
+                <input type="email" name="Email" placeholder="Where we can reply to you" required>
+                <br/><br/>
+                <label for="problem_type" name="problem_type">Problem Type:</label><br/>
+                <select id="problem_type" name="problem_type" required>
+                    <option value="">--Select--</option>
+                    <option value="">Order arrived late</option>
+                    <option value="">Order still outstanding</option>
+                    <option value="">Wasn't able to place order due to technacal issues</option>
+                    <option value="">Other</option>
+                </select>
+                <br/><br/>
+                <label for="message" name="message">Message(if you chose other as your option)</label><br/>
+                <textarea name="message" rows="10" cols="40" placeholder="write here if you chose other as your option">
+
+                </textarea>
+                <br/><br/>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
 </body>
 </html>

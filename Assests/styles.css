@@ -228,3 +228,7 @@ select:focus {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
+.product-card h3 {
+    color: #2e7d32;
+}
+

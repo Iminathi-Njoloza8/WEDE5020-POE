@@ -302,3 +302,10 @@ footer a:hover {
     margin: 20px 0;
 }
 
+.green-section {
+    background-color: #e8f5e9;
+    border-left: 5px solid #2e7d32;
+    padding: 20px;
+    margin: 20px 0;
+}
+

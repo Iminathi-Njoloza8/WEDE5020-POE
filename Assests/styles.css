@@ -295,3 +295,10 @@ footer a:hover {
    SPECIAL HIGHLIGHT
 ========================================= */
 
+.highlight {
+    background-color: #fff3e0;
+    border-left: 5px solid #f57c00;
+    padding: 20px;
+    margin: 20px 0;
+}
+

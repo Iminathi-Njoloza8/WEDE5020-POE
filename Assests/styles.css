@@ -79,3 +79,15 @@ main {
     margin: 30px auto;
 }
 
+section {
+    background-color: #ffffff;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10)
+}
+
+/*=============================
+    HEADINGS
+===============================*/
+

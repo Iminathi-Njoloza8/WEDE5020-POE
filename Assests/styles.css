@@ -330,4 +330,9 @@ footer a:hover {
         flex-direction: column;
     }
 
+     nav a {
+        width: 100%;
+        text-align: center;
+    }
+
     

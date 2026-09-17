@@ -326,4 +326,8 @@ footer a:hover {
         font-size: 24px;
     }
 
+     nav {
+        flex-direction: column;
+    }
+
     

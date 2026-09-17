@@ -261,3 +261,7 @@ td {
     border-bottom: 1px solid #dddddd;
 }
 
+tr:hover {
+    background-color: #fff3e0;
+}
+

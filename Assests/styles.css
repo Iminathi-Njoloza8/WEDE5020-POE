@@ -34,3 +34,12 @@ header{
     text-align: center;
     border-bottom: 5px solid #f57c00;
 }
+
+header h1,
+header h2,
+header h3,
+header h4 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+

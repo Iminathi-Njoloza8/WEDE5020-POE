@@ -201,3 +201,10 @@ select {
     background-color: #ffffff;
 }
 
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border: 2px solid #f57c00;
+}
+

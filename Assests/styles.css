@@ -269,3 +269,12 @@ tr:hover {
    FOOTER
 ========================================= */
 
+footer {
+    background-color: #2e7d32;
+    color: #ffffff;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    border-top: 5px solid #f57c00;
+}
+

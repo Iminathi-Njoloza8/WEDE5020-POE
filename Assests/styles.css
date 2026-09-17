@@ -249,3 +249,10 @@ table {
     background-color: #ffffff;
 }
 
+th {
+    background-color: #2e7d32;
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+}
+

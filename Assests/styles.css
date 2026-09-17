@@ -282,3 +282,8 @@ footer p {
     color: #ffffff;
 }
 
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+}
+

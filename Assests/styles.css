@@ -175,3 +175,10 @@ button:hover,
    FORMS
 ========================================= */
 
+form {
+    background-color: #f8f8f8;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 5px solid #2e7d32;
+}
+

@@ -142,3 +142,9 @@ img {
     height: auto;
 }
 
+section img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+

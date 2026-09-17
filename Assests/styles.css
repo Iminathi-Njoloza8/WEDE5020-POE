@@ -47,3 +47,12 @@ header h4 {
     NAVIGATION BAR
 ================================*/
 
+nav{
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+

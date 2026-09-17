@@ -73,3 +73,9 @@ nav a:hover {
     MAIN CONTENT
 ===============================*/
 
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+

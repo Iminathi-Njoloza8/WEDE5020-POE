@@ -166,3 +166,8 @@ button,
     transition: all 0.3s ease;
 }
 
+button:hover,
+.btn:hover {
+    background-color: #2e7d32;
+}
+

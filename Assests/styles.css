@@ -22,3 +22,15 @@ body{
     line-height: 1.6;
 }
 
+
+/*===============================
+    HEADER
+=================================*/
+
+header{
+    background-color: #2e7d32;
+    color: #ffffff;
+    padding: 20px 40px;
+    text-align: center;
+    border-bottom: 5px solid #f57c00;
+}

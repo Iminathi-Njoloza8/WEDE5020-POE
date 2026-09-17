@@ -182,3 +182,11 @@ form {
     border-left: 5px solid #2e7d32;
 }
 
+label {
+    display: block;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+

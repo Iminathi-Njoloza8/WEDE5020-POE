@@ -256,3 +256,8 @@ th {
     text-align: left;
 }
 
+td {
+    padding: 12px;
+    border-bottom: 1px solid #dddddd;
+}
+

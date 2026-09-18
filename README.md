@@ -92,8 +92,6 @@ Overview of the structure of the website and how it will look once done.
 │                  FOOTER                    │
 └────────────────────────────────────────────┘
 
-## Responsive Design
-
 ## Color Palette
   - Green- #2e7d32
   - Orange- #f57c00

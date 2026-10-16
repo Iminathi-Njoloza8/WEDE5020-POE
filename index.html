@@ -1,66 +1,255 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECOFRESH GROCERS | HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="Assests/styles.css">
+    <meta name="description"
+          content="Shop fresh fruit, vegetables and household grocery essentials with EcoFresh Grocers in the Eastern Cape.">
+
+    <meta name="robots" content="index,follow">
+    <title>Home | EcoFresh Grocers</title>
+
+    <link rel="stylesheet" href="./Assests/styles.css">
+    <script src="./Assests/app.js" defer></script>
 </head>
 <body>
-    <header>
-        <!--logo goes here-->
-        <!--Navigation links-->
-        <h4>EcoFresh Grocers</h4>
-        <nav>
-            <a href="./index.html">HOME</a>
-            <a href="./Pages/about.html">ABOUT US</a>
-            <a href="./Pages/contact.html">CONTACT US</a>
-            <a href="./Pages/enquiry.html">ENQUIRY</a>
-            <a href="./Pages/products and services.html">PRODUCTS AND SERVICES</a>
+
+<header class="site-header">
+    <div class="nav-wrap">
+        <a class="brand" href="index.html">
+            <span class="brand-mark">🍃</span>
+            <span>EcoFresh Grocers</span>
+        </a>
+
+        <button class="menu-toggle" type="button"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+            Menu ☰
+        </button>
+
+        <nav class="site-nav" id="main-navigation"
+             aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="./Pages/about.html">About us</a>
+            <a href="./Pages/products and services.html">Products &amp; services</a>
+            <a href="./Pages/enquiry.html">Enquiries</a>
+            <a href="./Pages/contact.html">Contact</a>
         </nav>
-    </header>
-    <!--Main Section-->
-    <main>
-        <!--First Section-->
-        <section>
-            <!--Welcome message-->
-            <h1>ECOFRESH GROCERS</h1>
-            <p>EcoFresh Grocers (Pty) Ltd is a South African company that provides fresh fruits, vegetables,
-                and your household groceries.These products are available to everyone as we just created a 
-                this website that makes it easier for people who leave far from the store to order.
-            </p>
-            <!--Image will me inserted here-->
-              <img src="./Assests/images/OIP.webp" width="60%" height="60%" alt="Main Image" >  
-        </section>
-        <footer>
-            <div class="footer-content">
+    </div>
+</header>
 
-                <section>
-                    <h2>EcoFresh Grocers</h2>
-                    <p>Fresh groceries. Local farmers. Better choice.</p>
-                </section>
+<main id="main-content">
 
-                <section>
-                    <h2>Quick Links</h2>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="eyebrow">Fresh from local roots</span>
 
-                    <a href="index.html">Home</a>
-                    <a href="./Pages/about.html">About Us</a>
-                    <a href="./Pages/contact.html">Contact</a>
-                    <a href="./Pages/enquiry.html">Enquiry</a>
-                    <a href="./Pages/products and services.html">Products and Services</a>
-                </section>
+                <h1>Good food.<br>Good mood.</h1>
 
-                <section>
-                    <h2>Contact</h2>
-                    <p>Email: ecofreshgrocers@gmail.com</p>
-                    <p>Phone: 053-125-4697</p>
-                </section>
+                <p>
+                    Bring home fresh fruit, crisp vegetables and everyday
+                    grocery essentials from EcoFresh Grocers. We are here
+                    to make shopping for your household simpler.
+                </p>
 
+                <a class="button"
+                   href="Pages/products and services.html">
+                    Explore our products
+                </a>
+
+                <a class="button"
+                   href="Pages/enquiry.html"
+                   style="background:#fff;color:#236b45;border:1px solid #236b45">
+                    Ask a question
+                </a>
+
+                <p class="muted">
+                    <small>
+                        Based in King William's Town, Eastern Cape |
+                        Established 2022
+                    </small>
+                </p>
             </div>
 
-            <p>&copy; 2026 EcoFresh Grocers. All rights reserved.</p>
-        </footer>
-    </main>
+            <div class="hero-art" role="img"
+                 aria-label="Illustration of fresh fruit and vegetables">
+                🍊🥬🍎
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Why shop with us?</span>
+                <h2>Everyday essentials, with a fresh outlook</h2>
+                <p>
+                    Our goal is to help customers access quality produce
+                    and useful household groceries while supporting
+                    local suppliers.
+                </p>
+            </div>
+
+            <div class="cards">
+                <article class="card">
+                    <div class="icon-tile">🍎</div>
+                    <h3>Fresh produce</h3>
+                    <p>
+                        Shop a colourful range of fruit and vegetables
+                        for everyday meals and snacks.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon-tile">🌱</div>
+                    <h3>Local-first values</h3>
+                    <p>
+                        We aim to support local farmers and suppliers
+                        wherever suitable products are available.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon-tile">🛍️</div>
+                    <h3>Convenient shopping</h3>
+                    <p>
+                        Browse product categories and send an enquiry
+                        about availability, pricing or delivery.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-soft">
+        <div class="container">
+            <div class="section-heading">
+                <span class="eyebrow">Explore EcoFresh</span>
+                <h2>How can we help today?</h2>
+            </div>
+
+            <div class="cards">
+                <article class="card">
+                    <h3>Find your favourites</h3>
+                    <p>
+                        Search our sample catalogue by product name
+                        or category.
+                    </p>
+                    <a href="Pages/products and services.html">
+                        Browse products →
+                    </a>
+                </article>
+
+                <article class="card">
+                    <h3>Learn about us</h3>
+                    <p>
+                        Discover our story, values and commitment
+                        to everyday freshness.
+                    </p>
+                    <a href="Pages/about.html">Our story →</a>
+                </article>
+
+                <article class="card">
+                    <h3>Need assistance?</h3>
+                    <p>
+                        Send a question about a product, a bulk order
+                        or delivery options.
+                    </p>
+                    <a href="Pages/enquiry.html">Make an enquiry →</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Frequently asked questions</h2>
+                <p>Quick answers to common shopping questions.</p>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq1">
+                    Can I ask about product availability?
+                    <span class="faq-indicator">+</span>
+                </button>
+                <div class="faq-answer" id="faq1" hidden>
+                    <p>
+                        Yes. Use the enquiry form to ask about stock,
+                        pricing, seasonal produce or bulk orders.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq2">
+                    Do you offer delivery?
+                    <span class="faq-indicator">+</span>
+                </button>
+                <div class="faq-answer" id="faq2" hidden>
+                    <p>
+                        Delivery arrangements should be confirmed
+                        directly with the business. Send an enquiry
+                        with your area and requested items.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question"
+                        aria-expanded="false"
+                        aria-controls="faq3">
+                    Can I pay online through this website?
+                    <span class="faq-indicator">+</span>
+                </button>
+                <div class="faq-answer" id="faq3" hidden>
+                    <p>
+                        Online payment is not enabled in this educational
+                        prototype. Do not enter payment information
+                        on this site.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <a class="brand" href="index.html" style="color:#fff">
+                <span class="brand-mark">🍃</span>
+                <span>EcoFresh Grocers</span>
+            </a>
+            <p>Fresh choices. Local roots. Better everyday living.</p>
+        </div>
+
+        <div>
+            <strong>Explore</strong>
+            <p>
+                <a href="./Pages/products and services.html">Products</a> ·
+                <a href="./Pages/enquiry.html">Make an enquiry</a> ·
+                <a href="./Pages/contact.html">Contact us</a>
+            </p>
+            <small>
+                © <span id="year">2026</span> EcoFresh Grocers.
+                Educational demonstration website.
+            </small>
+        </div>
+    </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="Back to top">
+    ↑ Top
+</button>
+
 </body>
 </html>

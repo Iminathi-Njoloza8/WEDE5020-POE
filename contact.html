@@ -1,86 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFresh Grocers | Contact Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="Assests/styles.css">
+    <meta name="description"
+          content="Contact EcoFresh Grocers with a general question, feedback or product issue.">
+
+    <meta name="robots" content="index,follow">
+    <title>Contact us | EcoFresh Grocers</title>
+
+    <link rel="stylesheet" href="./Assests/styles.css">
+    <script src="./Assests/app.js" defer></script>
 </head>
 <body>
-     <header>
-        <!--logo goes here-->
-        <!--Navigation links-->
-        <h4>EcoFresh Grocers</h4>
-        <nav>
-            <a href="../index.html">HOME</a>
-            <a href="./about.html">ABOUT US</a>
-            <a href="./contact.html">CONTACT US</a>
-            <a href="./enquiry.html">ENQUIRY</a>
-            <a href="./products and services.html">PRODUCTS AND SERVICES</a>
+
+<header class="site-header">
+    <div class="nav-wrap">
+        <a class="brand" href="../index.html">
+            <span class="brand-mark">🍃</span>
+            <span>EcoFresh Grocers</span>
+        </a>
+
+        <button class="menu-toggle" type="button"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+            Menu ☰
+        </button>
+
+        <nav class="site-nav" id="main-navigation"
+             aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="./about.html">About us</a>
+            <a href="./products and services.html">Products &amp; services</a>
+            <a href="./enquiry.html">Enquiries</a>
+            <a href="./contact.html">Contact</a>
         </nav>
-    </header>
-    <main>
-        <section>
-            <h1>Contact Us</h1>
-            <p>
-                The company now has a 24 hour service that was just introduced earlier this year which 
-                will allow our users to order online no matter how late it is. The company installed a new system
-                that does not require workers to be on guard for the full 24 hours. The system will accept your orders 
-                and process them to maintain the regular delivery time used. If there are any problems with your orders 
-                you can contact us using the information below, and if you have any quiries you can submit your enquiry
-                that on the next page of this website titled "Enquiry" on the navigation panel.
+    </div>
+</header>
+
+<main id="main-content">
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Get in touch</span>
+            <h1>Contact EcoFresh Grocers</h1>
+            <p class="muted">
+                We welcome questions, comments and general messages.
             </p>
-            <hr/>
-        </section>
-        <!--Our Contact Details-->
-        <section>
-            <h1>How to contact us:</h1>
-            <ul>
-                <li>Email: ecofreshgrocers@gmail.com</li>
-                <li>Cell Phone: (053)-125-4697</li>
-                <li>Hours: Monday to Friday, 08:00 AM - 06:00 PM SAT</li>
-            </ul>
-            <hr/>
-        </section>
-        <section>
-            <h1>Our Store/Office</h1>
-            <ul>
-                <li>Address: Shop 1, Moffett Retail Park, William Moffett Expy, Fairview, Gqeberha, 6001</li>
-                <li>Map: View on Google Maps</li>
-            </ul>
-            <!--Google Maps-->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.392449224942!2d25.552665975901164!3d-33.956751123620116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7ad32abe388855%3A0x58d2164c73c5b40f!2sFood%20Lover's%20Market%20Moffett%20Retail%20Park!5e0!3m2!1sen!2sza!4v1786627993833!5m2!1sen!2sza" 
-            width="600" 
-            height="450" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </section>
-        <!--Inquiry Form-->
-        <section>
-            <h1>Contact Form</h1>
-            <!--Creation of the form-->
-            <form action="#" method="post">
-                <label for="name" name="name">Your Name:</label><br/>
-                <input type="text" id="name" placeholder="Tell us who you are" required>
-                <br/><br/>
-                <label for="Email" name="Email">Email Address:</label><br/>
-                <input type="email" name="Email" placeholder="Where we can reply to you" required>
-                <br/><br/>
-                <label for="message" name="message">Message</label><br/>
-                <textarea name="message" rows="10" cols="40" placeholder="write what you are contacting us for" required>
+        </div>
+    </section>
 
-                </textarea>
-                <br/><br/>
-                <button type="submit">Submit</button>
+    <section class="section">
+        <div class="container form-layout">
+
+            <div>
+                <h2>Contact information</h2>
+
+                <div class="card">
+                    <h3>📍 Location</h3>
+                    <p>
+                        King William's Town, Eastern Cape,
+                        South Africa
+                    </p>
+
+                    <h3>🕘 Business hours</h3>
+                    <p>
+                        Hours are not published for this academic
+                        prototype. Please enquire before visiting.
+                    </p>
+
+                    <h3>✉️ General messages</h3>
+                    <p>
+                        Use the contact form to prepare a message
+                        for the organisation.
+                    </p>
+                </div>
+
+                <div class="notice">
+                    No real phone number or email address has been
+                    supplied for this fictional business, so none
+                    has been invented.
+                </div>
+            </div>
+
+            <form class="form-card"
+                  data-validate
+                  data-form-type="contact"
+                  novalidate>
+
+                <h2>Send a message</h2>
+
+                <div class="field">
+                    <label for="name">Full name *</label>
+                    <input id="name" name="name"
+                           autocomplete="name"
+                           required minlength="2">
+                    <small class="field-error"
+                           data-error-for="name"></small>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email address *</label>
+                    <input id="email" name="email"
+                           type="email"
+                           autocomplete="email"
+                           required>
+                    <small class="field-error"
+                           data-error-for="email"></small>
+                </div>
+
+                <div class="field">
+                    <label for="messageType">Message type *</label>
+                    <select id="messageType"
+                            name="messageType" required>
+                        <option value="">Choose a type</option>
+                        <option>General question</option>
+                        <option>Feedback</option>
+                        <option>Product issue</option>
+                        <option>Partnership</option>
+                    </select>
+                    <small class="field-error"
+                           data-error-for="messageType"></small>
+                </div>
+
+                <div class="field">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message"
+                              required minlength="10"
+                              placeholder="Write your message..."></textarea>
+                    <small class="field-error"
+                           data-error-for="message"></small>
+                </div>
+
+                <div class="field">
+                    <label for="consent">
+                        <input type="checkbox" id="consent"
+                               name="consent" required>
+                        I confirm that the information above
+                        is correct. *
+                    </label>
+                    <small class="field-error"
+                           data-error-for="consent"></small>
+                </div>
+
+                <button type="submit">Validate message</button>
+
+                <div class="form-status"
+                     data-form-status
+                     aria-live="polite"></div>
             </form>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 EcoFresh Grocers. All rights reserved.</p>
-    </footer>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <a class="brand" href="../index.html" style="color:#fff">
+                <span class="brand-mark">🍃</span>
+                <span>EcoFresh Grocers</span>
+            </a>
+            <p>Fresh choices. Local roots. Better everyday living.</p>
+        </div>
+
+        <div>
+            <strong>Explore</strong>
+            <p>
+                <a href="./products and services.html">Products</a> ·
+                <a href="./enquiry.html">Make an enquiry</a> ·
+                <a href="./contact.html">Contact us</a>
+            </p>
+            <small>
+                © <span id="year">2026</span> EcoFresh Grocers.
+                Educational demonstration website.
+            </small>
+        </div>
+    </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="Back to top">
+    ↑ Top
+</button>
+
 </body>
 </html>

@@ -1,65 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFresh Grocers | About Us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description"
+          content="Learn about EcoFresh Grocers, a fictional local grocery business focused on fresh produce and community values.">
+
+    <meta name="robots" content="index,follow">
+    <title>About us | EcoFresh Grocers</title>
+
     <link rel="stylesheet" href="./Assests/styles.css">
+    <script src="./Assests/app.js" defer></script>
 </head>
 <body>
-     <header>
-        <!--logo goes here-->
-        <!--Navigation links-->
-        <h4>EcoFresh Grocers</h4>
-        <nav>
-            <a href="../index.html">HOME</a>
-            <a href="./about.html">ABOUT US</a>
-            <a href="./contact.html">CONTACT US</a>
-            <a href="./enquiry.html">ENQUIRY</a>
-            <a href="./products and services.html">PRODUCTS AND SERVICES</a>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h1>About EcoFresh Grocers</h1>
-        </section>
-        <section>
-            <h2>Our History</h2>
-            <p>
-                EcoFresh Grocers (Pty) Ltd is a fictional South African company 
-                established in 2022 in Eastern Cape, King Williams Town. The company was founded 
-                to provide customers with affordable, fresh, and locally sourced fruits, vegetables, 
-                and household grocery products. Since opening, the company has been known for 
-                supporting local farmers while offering quality products and excellent customer 
-                service. The company now wishes to expand its online presence by launching a 
-                modern website where customers can browse products and place orders online.
-            </p>
-            <hr/>
-        </section>
-        <section>
-            <h2>Vision and Statement</h2>
-            <p>
-                 To provide fresh, affordable, and high-quality 
-                groceries while supporting local farmers and promoting sustainable shopping. To 
-                become South Africa’s most trusted online grocery retailer by delivering fresh 
-                products with outstanding customers services.
-            </p>
-            <hr/>
-        </section>
-        <section>
-            <h2>Our Goals</h2>
-            <ul>
-                <li>Allow customers to order online.</li>
-                <li>Promote weekly specials and seasonal products.</li>
-                <li>Improve customer satisfaction.</li>
-                <li>Increase monthly sales by 40%.</li>
-            </ul>
-            <hr/>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 EcoFresh Grocers. All rights reserved.</p>
-    </footer>
+<header class="site-header">
+    <div class="nav-wrap">
+        <a class="brand" href="../index.html">
+            <span class="brand-mark">🍃</span>
+            <span>EcoFresh Grocers</span>
+        </a>
+
+        <button class="menu-toggle" type="button"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+            Menu ☰
+        </button>
+
+        <nav class="site-nav" id="main-navigation"
+             aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="./about.html">About us</a>
+            <a href="./products and services.html">Products &amp; services</a>
+            <a href="./enquiry.html">Enquiries</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content">
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Our story</span>
+            <h1>Fresh choices, rooted in community</h1>
+            <p class="muted">
+                A local grocery concept built around freshness,
+                convenience and customer care.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container form-layout">
+            <div>
+                <div class="hero-art"
+                     style="min-height:260px;font-size:5rem"
+                     role="img"
+                     aria-label="Fresh produce illustration">
+                    🥦🍐🥕
+                </div>
+            </div>
+
+            <div>
+                <h2>About EcoFresh Grocers</h2>
+
+                <p>
+                    EcoFresh Grocers is a fictional South African grocery
+                    business established in 2022 in King William's Town,
+                    Eastern Cape. The business concept focuses on making
+                    fresh fruit, vegetables and household groceries
+                    easier to access.
+                </p>
+
+                <p>
+                    Our website is designed to help customers learn
+                    about the business, explore a sample product range
+                    and ask questions before making a purchase. We also
+                    recognise the value of supporting local farmers
+                    and suppliers.
+                </p>
+
+                <p>
+                    This website is an academic project. Product
+                    listings, prices and forms are examples for
+                    demonstration and should be confirmed before
+                    a real transaction.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-soft">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Our values</h2>
+                <p>The principles guiding the EcoFresh concept.</p>
+            </div>
+
+            <div class="cards">
+                <article class="card">
+                    <div class="icon-tile">🌿</div>
+                    <h3>Freshness</h3>
+                    <p>
+                        Make fresh produce a practical part
+                        of everyday meals.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon-tile">🤝</div>
+                    <h3>Community</h3>
+                    <p>
+                        Build relationships with customers
+                        and local suppliers.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="icon-tile">💚</div>
+                    <h3>Care</h3>
+                    <p>
+                        Offer clear information and helpful
+                        customer support.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>A closer look at fresh food</h2>
+                <p>
+                    Select an image tile to view it in a larger lightbox.
+                </p>
+            </div>
+
+            <div class="gallery">
+                <button type="button"
+                        data-gallery-item
+                        data-visual="🍎"
+                        data-caption="Fresh apples"
+                        aria-label="View fresh apples">
+                    🍎
+                </button>
+
+                <button type="button"
+                        data-gallery-item
+                        data-visual="🥕"
+                        data-caption="Crisp carrots"
+                        aria-label="View crisp carrots">
+                    🥕
+                </button>
+
+                <button type="button"
+                        data-gallery-item
+                        data-visual="🥬"
+                        data-caption="Leafy greens"
+                        aria-label="View leafy greens">
+                    🥬
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox"
+         role="dialog"
+         aria-modal="true"
+         aria-hidden="true"
+         aria-label="Gallery image">
+        <div class="lightbox-content">
+            <button class="lightbox-close"
+                    type="button"
+                    aria-label="Close image">
+                Close ✕
+            </button>
+
+            <div class="lightbox-visual">🍎</div>
+            <h2 class="lightbox-caption">Fresh produce</h2>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <a class="brand" href="../index.html" style="color:#fff">
+                <span class="brand-mark">🍃</span>
+                <span>EcoFresh Grocers</span>
+            </a>
+            <p>Fresh choices. Local roots. Better everyday living.</p>
+        </div>
+
+        <div>
+            <strong>Explore</strong>
+            <p>
+                <a href="./products and services.html">Products</a> ·
+                <a href="./enquiry.html">Make an enquiry</a> ·
+                <a href="./contact.html">Contact us</a>
+            </p>
+            <small>
+                © <span id="year">2026</span> EcoFresh Grocers.
+                Educational demonstration website.
+            </small>
+        </div>
+    </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="Back to top">
+    ↑ Top
+</button>
+
 </body>
 </html>

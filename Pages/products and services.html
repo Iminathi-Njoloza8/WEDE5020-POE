@@ -1,93 +1,326 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFresh Grocers | Product & Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description"
+          content="Search and filter sample EcoFresh Grocers fruit, vegetables and pantry essentials.">
+
+    <meta name="robots" content="index,follow">
+    <title>Products and services | EcoFresh Grocers</title>
 
     <link rel="stylesheet" href="../Assests/styles.css">
+    <script src="../Assests/app.js" defer></script>
 </head>
 <body>
-     <header>
-        <!--logo goes here-->
-        <!--Navigation links-->
-        <h4>EcoFresh Grocers</h4>
-        <nav>
-            <a href="../index.html">HOME</a>
-            <a href="./about.html">ABOUT US</a>
-            <a href="./contact.html">CONTACT US</a>
-            <a href="./enquiry.html">ENQUIRY</a>
-            <a href="./products and services.html">PRODUCTS AND SERVICES</a>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h1>What we provide</h1>
-            <p>
-                Here at EcoFresh Grocers we provide the best services and products as we sell the freshest 
-                fruits and vegetables you could ever find. If we ever have a problem we try our outmost best
-                resolve the issue immedietly and leave our customers satisfied at the end of their grocery 
-                shopping day. 
-            </p>
-        </section>
-        <hr/>
-        <section>
-            <h1>The type of products we sell</h1>
-            <p>
-                As we have said before we provide the best fruits ad vegetables you could ever find
-                and here is an insight of the fruits and vegetables we sell inour local stores.
-            </p>
-            <!--Pictures will be inserted here-->
-            <!--Used table to put the pictures in a line-->
-            <table>
-                <tr>
-                    <td>
-                        <img src="../Assests/images/grocery shopping.jpg" width="50%" height="60%" alt="vegetables pic">
-                        <!--This text will appear below the vegetables picture-->
-                        <p><b>Our Vegetables</b></p>
-                    </td>
-                    <td>
-                        <img src="../Assests/images/Heaven.jpg" width="50%" height="80%" alt="fruits pic">
-                        <!--This text will appear below the fruits picture-->
-                        <p><b>Our Fruits</b></p>
-                    </td>
-                    <td>
-                        <img src="../Assests/images/Planning Ahead_ Essential Groceries on Amazon Next Year.jpg" width="50%" height="60%" alt="grocery cart">
-                        <!--This text will appear below the grocery cart picture-->
-                        <p><b>Our Customers potential cart</b></p>
-                    </td>
-                </tr>
-            </table>
-        </section>
-        <hr/>
-        <section>
-            <h1>Our Prices</h1>
-            <p>
-                Our prices rage and tend to fluctuate depending on the time of the month and the 
-                the available specials and discounts available at that time.
-            </p>
-            <hr/>
-            <h2>The Fruits</h2>
-            <img src="../Assests/images/Vibrant and colourful Fruit display.jpg" width="20%" height="30%" alt="vibrant fruits pic">
-            <p><b>Our fruits normaly range from R50 to R150 depending on kgs a customer purchases</b></p>
-            <p><b>When there are specials they range from R20 to R100</b></p>
-            <p><b>And our our discoutnts are normaly 20% to 60% off</b></p>
-            <hr/>
-            <h2>The Vegetables</h2>
-            <img src="../Assests/images/colorful veges.jpg" width="20%" height="30%" alt="colourful vegetables">
-            <p><b>Our vegetables normally range from R80 to R250 depending on the kgs a customer purchases</b></p>
-            <p><b>When there are specials they range from R50 to R200</b></p>
-            <p><b>The discounts are teh same as the fruits discounts which is 20% to 60% off</b></p>
-            <hr/>
-            <h2>Other Essential Products</h2>
-            <img src="../Assests/images/download (1).jpg" width="20%" height="30%" alt="Other products">
-            <p><b>This is an insight of some of our other products but unfortunately our customers must come the local shop to purchase them.</b></p>
-            <hr/>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 EcoFresh Grocers. All rights reserved.</p>
-    </footer>
+<header class="site-header">
+    <div class="nav-wrap">
+        <a class="brand" href="../index.html">
+            <span class="brand-mark">🍃</span>
+            <span>EcoFresh Grocers</span>
+        </a>
+
+        <button class="menu-toggle" type="button"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+            Menu ☰
+        </button>
+
+        <nav class="site-nav" id="main-navigation"
+             aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="./about.html">About us</a>
+            <a href="./products and services.html">Products &amp; services</a>
+            <a href="./enquiry.html">Enquiries</a>
+            <a href="./contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content">
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Shop the range</span>
+            <h1>Products &amp; services</h1>
+            <p class="muted">
+                Browse sample products and filter the catalogue
+                to find what you need.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <div class="notice">
+                <strong>Demo catalogue:</strong>
+                Prices and stock are illustrative examples only
+                and are not live offers.
+            </div>
+
+            <div class="product-tools">
+                <label>
+                    <span class="hidden">Search products</span>
+                    <input id="productSearch"
+                           type="search"
+                           placeholder="Search products..."
+                           aria-label="Search products">
+                </label>
+
+                <label>
+                    <span class="hidden">Filter category</span>
+                    <select id="productCategory"
+                            aria-label="Filter by category">
+                        <option value="all">All categories</option>
+                        <option value="fruit">Fruit</option>
+                        <option value="vegetables">Vegetables</option>
+                        <option value="pantry">Pantry essentials</option>
+                    </select>
+                </label>
+
+                <span id="productCount"
+                      aria-live="polite"
+                      class="muted"
+                      style="align-self:center">
+                    Products found
+                </span>
+            </div>
+
+            <div class="cards" id="productList">
+
+                <article class="card product-card"
+                         data-name="apples"
+                         data-category="fruit">
+                    <div class="product-emoji">🍎</div>
+                    <span class="pill">Fruit</span>
+                    <h3>Fresh apples</h3>
+                    <p>Crunchy fruit for lunchboxes and snacks.</p>
+                    <p class="price">R 24.99 / bag</p>
+                    <a class="button"
+                       href="enquiry.html?product=Fresh%20apples">
+                        Enquire
+                    </a>
+                </article>
+
+                <article class="card product-card"
+                         data-name="bananas"
+                         data-category="fruit">
+                    <div class="product-emoji">🍌</div>
+                    <span class="pill">Fruit</span>
+                    <h3>Bananas</h3>
+                    <p>A convenient everyday fruit.</p>
+                    <p class="price">R 19.99 / bunch</p>
+                    <a class="button"
+                       href="enquiry.html?product=Bananas">
+                        Enquire
+                    </a>
+                </article>
+
+                <article class="card product-card"
+                         data-name="oranges"
+                         data-category="fruit">
+                    <div class="product-emoji">🍊</div>
+                    <span class="pill">Fruit</span>
+                    <h3>Oranges</h3>
+                    <p>Juicy citrus for a refreshing snack.</p>
+                    <p class="price">R 29.99 / bag</p>
+                    <a class="button"
+                       href="enquiry.html?product=Oranges">
+                        Enquire
+                    </a>
+                </article>
+
+                <article class="card product-card"
+                         data-name="carrots"
+                         data-category="vegetables">
+                    <div class="product-emoji">🥕</div>
+                    <span class="pill">Vegetables</span>
+                    <h3>Carrots</h3>
+                    <p>Versatile vegetables for salads and cooking.</p>
+                    <p class="price">R 14.99 / bag</p>
+                    <a class="button"
+                       href="enquiry.html?product=Carrots">
+                        Enquire
+                    </a>
+                </article>
+
+                <article class="card product-card"
+                         data-name="spinach"
+                         data-category="vegetables">
+                    <div class="product-emoji">🥬</div>
+                    <span class="pill">Vegetables</span>
+                    <h3>Leafy greens</h3>
+                    <p>Greens for sides, soups and family meals.</p>
+                    <p class="price">R 12.99 / bunch</p>
+                    <a class="button"
+                       href="enquiry.html?product=Leafy%20greens">
+                        Enquire
+                    </a>
+                </article>
+
+                <article class="card product-card"
+                         data-name="potatoes"
+                         data-category="vegetables">
+                    <div class="product-emoji">🥔</div>
+                    <span class="pill">Vegetables</span>
+                    <h3>Potatoes</h3>
+                    <p>A staple for a wide range of meals.</p>
+                    <p class="price">R 34.99 / bag</p>
+                    <a class="button"
+                       href="enquiry.html?product=Potatoes">
+                        Enquire
+                    </a>
+                </article>
+
+                <article class="card product-card"
+                         data-name="rice"
+                         data-category="pantry">
+                    <div class="product-emoji">🍚</div>
+                    <span class="pill">Pantry</span>
+                    <h3>Rice</h3>
+                    <p>A cupboard essential for everyday cooking.</p>
+                    <p class="price">R 29.99 / pack</p>
+                    <a class="button"
+                       href="enquiry.html?product=Rice">
+                        Enquire
+                    </a>
+                </article>
+
+                <article class="card product-card"
+                         data-name="oats"
+                         data-category="pantry">
+                    <div class="product-emoji">🥣</div>
+                    <span class="pill">Pantry</span>
+                    <h3>Breakfast oats</h3>
+                    <p>A simple pantry option for breakfast.</p>
+                    <p class="price">R 26.99 / pack</p>
+                    <a class="button"
+                       href="enquiry.html?product=Breakfast%20oats">
+                        Enquire
+                    </a>
+                </article>
+
+                <article class="card product-card"
+                         data-name="cooking oil"
+                         data-category="pantry">
+                    <div class="product-emoji">🫙</div>
+                    <span class="pill">Pantry</span>
+                    <h3>Cooking oil</h3>
+                    <p>An everyday ingredient for home cooking.</p>
+                    <p class="price">R 39.99 / bottle</p>
+                    <a class="button"
+                       href="enquiry.html?product=Cooking%20oil">
+                        Enquire
+                    </a>
+                </article>
+
+            </div>
+
+            <p id="noProducts" class="notice hidden" role="status">
+                No products match your search.
+                Try another name or category.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="section section-soft">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Our service approach</h2>
+                <p>
+                    Ask about availability, bulk quantities and
+                    possible delivery arrangements.
+                </p>
+            </div>
+
+            <div data-tabs>
+                <div class="tabs" role="tablist"
+                     aria-label="Service information">
+
+                    <button type="button" role="tab"
+                            data-tab="availability"
+                            aria-selected="true">
+                        Availability
+                    </button>
+
+                    <button type="button" role="tab"
+                            data-tab="bulk"
+                            aria-selected="false">
+                        Bulk orders
+                    </button>
+
+                    <button type="button" role="tab"
+                            data-tab="delivery"
+                            aria-selected="false">
+                        Delivery
+                    </button>
+                </div>
+
+                <div class="tab-panel" data-panel="availability">
+                    <h3>Seasonal availability</h3>
+                    <p>
+                        Some fresh products vary with season and
+                        supplier stock. Contact us to confirm
+                        current availability.
+                    </p>
+                </div>
+
+                <div class="tab-panel" data-panel="bulk" hidden>
+                    <h3>Bulk orders</h3>
+                    <p>
+                        For events or larger household orders,
+                        include your quantities and preferred
+                        collection date in an enquiry.
+                    </p>
+                </div>
+
+                <div class="tab-panel" data-panel="delivery" hidden>
+                    <h3>Delivery enquiries</h3>
+                    <p>
+                        Ask whether delivery is available in your area.
+                        Fees and delivery times would need to be
+                        confirmed directly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <a class="brand" href="../index.html" style="color:#fff">
+                <span class="brand-mark">🍃</span>
+                <span>EcoFresh Grocers</span>
+            </a>
+            <p>Fresh choices. Local roots. Better everyday living.</p>
+        </div>
+
+        <div>
+            <strong>Explore</strong>
+            <p>
+                <a href="./products and services.html">Products</a> ·
+                <a href="./enquiry.html">Make an enquiry</a> ·
+                <a href="./contact.html">Contact us</a>
+            </p>
+            <small>
+                © <span id="year">2026</span> EcoFresh Grocers.
+                Educational demonstration website.
+            </small>
+        </div>
+    </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="Back to top">
+    ↑ Top
+</button>
+
 </body>
 </html>

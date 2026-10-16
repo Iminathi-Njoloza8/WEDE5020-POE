@@ -1,57 +1,213 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoFresh Grocers | Enquiry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description"
+          content="Send an enquiry to EcoFresh Grocers about product availability, pricing, bulk orders or delivery.">
+
+    <meta name="robots" content="index,follow">
+    <title>Enquiry | EcoFresh Grocers</title>
 
     <link rel="stylesheet" href="../Assests/styles.css">
+    <script src="../Assests/app.js" defer></script>
 </head>
 <body>
-     <header>
-        <!--logo goes here-->
-        <!--Navigation links-->
-        <h4>EcoFresh Grocers</h4>
-        <nav>
-            <a href="../index.html">HOME</a>
-            <a href="./about.html">ABOUT US</a>
-            <a href="./contact.html">CONTACT US</a>
-            <a href="./enquiry.html">ENQUIRY</a>
-            <a href="./products and services.html">PRODUCTS AND SERVICES</a>
+
+<header class="site-header">
+    <div class="nav-wrap">
+        <a class="brand" href="../index.html">
+            <span class="brand-mark">🍃</span>
+            <span>EcoFresh Grocers</span>
+        </a>
+
+        <button class="menu-toggle" type="button"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+            Menu ☰
+        </button>
+
+        <nav class="site-nav" id="main-navigation"
+             aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="./about.html">About us</a>
+            <a href="./products and services.html">Products &amp; services</a>
+            <a href="./enquiry.html">Enquiries</a>
+            <a href="./contact.html">Contact</a>
         </nav>
-    </header>
-    <main>
-        <section>
-            <h1>Inquiry Form</h1>
-            <!--Creation of the form-->
-            <form action="#" method="post">
-                <label for="name" name="name">Your Name:</label><br/>
-                <input type="text" id="name" placeholder="Tell us who you are" required>
-                <br/><br/>
-                <label for="Email" name="Email">Email Address:</label><br/>
-                <input type="email" name="Email" placeholder="Where we can reply to you" required>
-                <br/><br/>
-                <label for="problem_type" name="problem_type">Problem Type:</label><br/>
-                <select id="problem_type" name="problem_type" required>
-                    <option value="">--Select--</option>
-                    <option value="">Order arrived late</option>
-                    <option value="">Order still outstanding</option>
-                    <option value="">Wasn't able to place order due to technacal issues</option>
-                    <option value="">Other</option>
-                </select>
-                <br/><br/>
-                <label for="message" name="message">Message(if you chose other as your option)</label><br/>
-                <textarea name="message" rows="10" cols="40" placeholder="write here if you chose other as your option">
+    </div>
+</header>
 
-                </textarea>
-                <br/><br/>
-                <button type="submit">Submit</button>
+<main id="main-content">
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow">We're here to help</span>
+            <h1>Product &amp; service enquiry</h1>
+            <p class="muted">
+                Ask about a product, availability, pricing,
+                bulk orders or delivery options.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container form-layout">
+
+            <div>
+                <h2>Tell us what you need</h2>
+
+                <p>
+                    Complete the form and check that your details
+                    are correct. JavaScript validation will identify
+                    missing or incorrectly formatted information.
+                </p>
+
+                <div class="notice">
+                    This is a front-end demonstration. The form does
+                    not send data to a server or store it online.
+                </div>
+
+                <p>
+                    <strong>Helpful tip:</strong>
+                    Include the product name, quantity and any date
+                    that matters to your enquiry.
+                </p>
+            </div>
+
+            <form class="form-card"
+                  data-validate
+                  data-form-type="enquiry"
+                  novalidate>
+
+                <div class="form-grid">
+
+                    <div class="field">
+                        <label for="name">Full name *</label>
+                        <input id="name" name="name"
+                               autocomplete="name"
+                               required minlength="2">
+                        <small class="field-error"
+                               data-error-for="name"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email address *</label>
+                        <input id="email" name="email"
+                               type="email"
+                               autocomplete="email"
+                               required>
+                        <small class="field-error"
+                               data-error-for="email"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="phone">Phone number *</label>
+                        <input id="phone" name="phone"
+                               type="tel"
+                               autocomplete="tel"
+                               placeholder="+27..."
+                               required>
+                        <small class="field-error"
+                               data-error-for="phone"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="topic">Enquiry type *</label>
+                        <select id="topic" name="topic" required>
+                            <option value="">Choose one</option>
+                            <option>Product availability</option>
+                            <option>Pricing</option>
+                            <option>Bulk order</option>
+                            <option>Delivery</option>
+                            <option>Other</option>
+                        </select>
+                        <small class="field-error"
+                               data-error-for="topic"></small>
+                    </div>
+
+                    <div class="field full">
+                        <label for="product">Product (optional)</label>
+                        <input id="product" name="product"
+                               placeholder="e.g. Fresh apples">
+                    </div>
+
+                    <div class="field full">
+                        <label for="message">Your message *</label>
+                        <textarea id="message" name="message"
+                                  required minlength="10"
+                                  placeholder="Tell us how we can help..."></textarea>
+                        <small class="field-error"
+                               data-error-for="message"></small>
+                    </div>
+
+                    <div class="field full">
+                        <label for="consent">
+                            <input type="checkbox" id="consent"
+                                   name="consent" required>
+                            I confirm that the information above
+                            is correct. *
+                        </label>
+                        <small class="field-error"
+                               data-error-for="consent"></small>
+                    </div>
+
+                </div>
+
+                <button type="submit">Validate enquiry</button>
+
+                <div class="form-status"
+                     data-form-status
+                     aria-live="polite"></div>
             </form>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 EcoFresh Grocers. All rights reserved.</p>
-    </footer>
+        </div>
+    </section>
+
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const parameters = new URLSearchParams(window.location.search);
+    const product = parameters.get("product");
+    const productField = document.getElementById("product");
+
+    if (product && productField) {
+        productField.value = product;
+    }
+});
+</script>
+
+<footer class="footer">
+    <div class="container footer-grid">
+        <div>
+            <a class="brand" href="../index.html" style="color:#fff">
+                <span class="brand-mark">🍃</span>
+                <span>EcoFresh Grocers</span>
+            </a>
+            <p>Fresh choices. Local roots. Better everyday living.</p>
+        </div>
+
+        <div>
+            <strong>Explore</strong>
+            <p>
+                <a href="./products and services.html">Products</a> ·
+                <a href="./enquiry.html">Make an enquiry</a> ·
+                <a href="./contact.html">Contact us</a>
+            </p>
+            <small>
+                © <span id="year">2026</span> EcoFresh Grocers.
+                Educational demonstration website.
+            </small>
+        </div>
+    </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="Back to top">
+    ↑ Top
+</button>
+
 </body>
 </html>

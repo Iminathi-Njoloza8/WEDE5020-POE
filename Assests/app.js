@@ -132,61 +132,304 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Gallery lightbox
-    const lightbox = document.getElementById("lightbox");
+   
+    // Image lightbox for all website pictures
 
-    document.querySelectorAll("[data-gallery-item]").forEach(function (item) {
-        item.addEventListener("click", function () {
-            if (!lightbox) return;
+    let currentImageIndex = 0;
+    let galleryImages = [];
+    let previousFocusedElement = null;
 
-            const visual = lightbox.querySelector(".lightbox-visual");
-            const caption = lightbox.querySelector(".lightbox-caption");
-            const closeButton = lightbox.querySelector(".lightbox-close");
+    // Create the lightbox automatically
+    const lightbox = document.createElement("div");
 
-            if (visual) {
-                visual.textContent = item.dataset.visual || "🥬";
+    lightbox.id = "image-lightbox";
+    lightbox.className = "image-lightbox";
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.setAttribute("aria-label", "Image viewer");
+    lightbox.setAttribute("aria-hidden", "true");
+
+    lightbox.innerHTML = `
+        <div class="image-lightbox-content">
+
+            <button type="button"
+                    class="lightbox-close"
+                    aria-label="Close image viewer">
+                &times;
+            </button>
+
+            <button type="button"
+                    class="lightbox-prev"
+                    aria-label="Previous image">
+                &#10094;
+            </button>
+
+            <img class="lightbox-image"
+                 src=""
+                 alt="">
+
+            <button type="button"
+                    class="lightbox-next"
+                    aria-label="Next image">
+                &#10095;
+            </button>
+
+            <p class="lightbox-caption"></p>
+
+        </div>
+    `;
+
+    document.body.appendChild(lightbox);
+
+    // Get lightbox elements
+    const lightboxImage = lightbox.querySelector(".lightbox-image");
+    const lightboxCaption = lightbox.querySelector(".lightbox-caption");
+    const closeButton = lightbox.querySelector(".lightbox-close");
+    const previousButton = lightbox.querySelector(".lightbox-prev");
+    const nextButton = lightbox.querySelector(".lightbox-next");
+
+    // Add lightbox styling
+    const lightboxStyles = document.createElement("style");
+
+    lightboxStyles.textContent = `
+        .image-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.93);
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .image-lightbox.open {
+            display: flex;
+        }
+
+        .image-lightbox-content {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .lightbox-image {
+            display: block;
+            max-width: 100%;
+            max-height: 78vh;
+            width: auto;
+            height: auto;
+            margin: auto;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .image-lightbox button {
+            position: absolute;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .image-lightbox button:hover {
+            background: #398343;
+        }
+
+        .lightbox-close {
+            top: -45px;
+            right: 0;
+            width: 42px;
+            height: 42px;
+            font-size: 28px;
+        }
+
+        .lightbox-prev,
+        .lightbox-next {
+            top: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 25px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox-prev {
+            left: -60px;
+        }
+
+        .lightbox-next {
+            right: -60px;
+        }
+
+        main img:not([data-no-lightbox]):not(.no-lightbox) {
+            cursor: zoom-in;
+        }
+
+        @media (max-width: 600px) {
+            .lightbox-prev {
+                left: 5px;
             }
 
-            if (caption) {
-                caption.textContent =
-                    item.dataset.caption || "EcoFresh Grocers";
+            .lightbox-next {
+                right: 5px;
             }
 
-            lightbox.classList.add("open");
-            lightbox.setAttribute("aria-hidden", "false");
-            document.body.style.overflow = "hidden";
+            .lightbox-image {
+                max-height: 65vh;
+            }
 
-            if (closeButton) closeButton.focus();
+            .lightbox-close {
+                right: 5px;
+                top: -50px;
+            }
+        }
+    `;
+
+    document.head.appendChild(lightboxStyles);
+
+    // Find all pictures on the website
+    function getGalleryImages() {
+        return Array.from(
+            document.querySelectorAll("img")
+        ).filter(function (image) {
+            return !image.closest("#image-lightbox") &&
+                   !image.classList.contains("no-lightbox") &&
+                   image.dataset.noLightbox !== "true";
         });
-    });
+    }
 
+    // Display the selected picture
+    function showLightboxImage(index) {
+
+        if (galleryImages.length === 0) return;
+
+        currentImageIndex =
+            (index + galleryImages.length) % galleryImages.length;
+
+        const selectedImage = galleryImages[currentImageIndex];
+
+        lightboxImage.src =
+            selectedImage.currentSrc || selectedImage.src;
+
+        lightboxImage.alt =
+            selectedImage.alt || "EcoFresh Grocers picture";
+
+        lightboxCaption.textContent =
+            selectedImage.dataset.caption ||
+            selectedImage.alt ||
+            "EcoFresh Grocers";
+    }
+
+    // Open the lightbox
+    function openLightbox(image) {
+
+        galleryImages = getGalleryImages();
+
+        currentImageIndex = galleryImages.indexOf(image);
+
+        if (currentImageIndex === -1) return;
+
+        previousFocusedElement = document.activeElement;
+
+        showLightboxImage(currentImageIndex);
+
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+
+        document.body.style.overflow = "hidden";
+
+        closeButton.focus();
+    }
+
+    // Close the lightbox
     function closeLightbox() {
-        if (!lightbox) return;
 
         lightbox.classList.remove("open");
         lightbox.setAttribute("aria-hidden", "true");
+
         document.body.style.overflow = "";
+
+        lightboxImage.src = "";
+
+        if (previousFocusedElement) {
+            previousFocusedElement.focus();
+        }
     }
 
-    if (lightbox) {
-        const closeButton = lightbox.querySelector(".lightbox-close");
+    // Allow users to click any picture to open it
+    document.addEventListener("click", function (event) {
 
-        if (closeButton) {
-            closeButton.addEventListener("click", closeLightbox);
+        const image = event.target.closest("img");
+
+        if (!image) return;
+
+        if (
+            image.closest("#image-lightbox") ||
+            image.classList.contains("no-lightbox") ||
+            image.dataset.noLightbox === "true"
+        ) {
+            return;
         }
 
-        lightbox.addEventListener("click", function (event) {
-            if (event.target === lightbox) {
-                closeLightbox();
-            }
-        });
-    }
+        // Prevent a linked picture from navigating away
+        event.preventDefault();
 
+        openLightbox(image);
+    });
+
+    // Previous picture
+    previousButton.addEventListener("click", function () {
+        showLightboxImage(currentImageIndex - 1);
+    });
+
+    // Next picture
+    nextButton.addEventListener("click", function () {
+        showLightboxImage(currentImageIndex + 1);
+    });
+
+    // Close button
+    closeButton.addEventListener("click", closeLightbox);
+
+    // Close when clicking outside the picture
+    lightbox.addEventListener("click", function (event) {
+
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+
+    });
+
+    // Keyboard controls
     document.addEventListener("keydown", function (event) {
+
+        if (!lightbox.classList.contains("open")) return;
+
         if (event.key === "Escape") {
             closeLightbox();
         }
+
+        if (event.key === "ArrowRight") {
+            showLightboxImage(currentImageIndex + 1);
+        }
+
+        if (event.key === "ArrowLeft") {
+            showLightboxImage(currentImageIndex - 1);
+        }
+
     });
+
 
     // Form validation
     document.querySelectorAll("form[data-validate]").forEach(function (form) {

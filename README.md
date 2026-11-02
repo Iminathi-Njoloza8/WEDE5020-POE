@@ -117,6 +117,9 @@ features and editing. We will be decorating the website using CSS in part 2.
 ## Part 2 Details
 In part 2 of this poe I focused on improving the marks I lost in part 1. Apart from trying to improve my marks I also create a style.css page and a sitemap page, where in the css page I added the styling and colors I wanted in my website to make it look more presentable and pleasing to the eye, while in the sitemap page I created the outline of the website on how it most probably will look. And I also updated the README file.
 
+## Part 3 Details
+
+
 ## References (Harvard Anglia Style)
   - Bootstrap. (2025) Bootstrap Documentation. Available at: https://getbootstrap.com
   - Mozilla Developer Network. (2025) HTML, CSS and JavaScript Documentation. Available 

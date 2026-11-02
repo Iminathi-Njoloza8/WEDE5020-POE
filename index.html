@@ -1,14 +1,16 @@
 
+
 <!DOCTYPE html>
 <html lang="en-ZA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description"
-          content="Shop fresh fruit, vegetables and household grocery essentials with EcoFresh Grocers in the Eastern Cape.">
-
+    <meta name="description" content="Shop fresh fruit, vegetables and everyday grocery essentials with EcoFresh Grocers, a local grocery concept based in King William’s Town, Eastern Cape.">
+    <meta name="keywords" content="EcoFresh Grocers, fresh groceries, fruit, vegetables, King William’s Town, Eastern Cape, local produce">
     <meta name="robots" content="index,follow">
+
+    <link rel="canonical" href="https://iminathi-njoloza8.github.io/WEDE5020-POE/">
     <title>Home | EcoFresh Grocers</title>
 
     <link rel="stylesheet" href="./Assests/styles.css">
@@ -19,14 +21,14 @@
 <header class="site-header">
     <div class="nav-wrap">
         <a class="brand" href="index.html">
-            <span class="brand-mark">🍃</span>
+            <span class="brand-mark" aria-hidden="true">EF</span>
             <span>EcoFresh Grocers</span>
         </a>
 
         <button class="menu-toggle" type="button"
                 aria-expanded="false"
                 aria-controls="main-navigation">
-            Menu ☰
+            Menu
         </button>
 
         <nav class="site-nav" id="main-navigation"
@@ -76,7 +78,10 @@
 
             <div class="hero-art" role="img"
                  aria-label="Illustration of fresh fruit and vegetables">
-                <img src="./Assests/images/home_page.webp" alt="Groceries Picture" width="1000">
+                <img src="./Assests/images/home_page.webp"
+                     alt="Fresh fruit and vegetables arranged for EcoFresh Grocers"
+                     width="1000"
+                     fetchpriority="high">
             </div>
         </div>
     </section>
@@ -95,7 +100,7 @@
 
             <div class="cards">
                 <article class="card">
-                    <div class="icon-tile">🍎</div>
+                    <div class="icon-tile" aria-hidden="true">01</div>
                     <h3>Fresh produce</h3>
                     <p>
                         Shop a colourful range of fruit and vegetables
@@ -104,7 +109,7 @@
                 </article>
 
                 <article class="card">
-                    <div class="icon-tile">🌱</div>
+                    <div class="icon-tile" aria-hidden="true">02</div>
                     <h3>Local-first values</h3>
                     <p>
                         We aim to support local farmers and suppliers
@@ -113,7 +118,7 @@
                 </article>
 
                 <article class="card">
-                    <div class="icon-tile">🛍️</div>
+                    <div class="icon-tile" aria-hidden="true">03</div>
                     <h3>Convenient shopping</h3>
                     <p>
                         Browse product categories and send an enquiry
@@ -139,7 +144,7 @@
                         or category.
                     </p>
                     <a href="Pages/products and services.html">
-                        Browse products →
+                        Browse products
                     </a>
                 </article>
 
@@ -149,7 +154,7 @@
                         Discover our story, values and commitment
                         to everyday freshness.
                     </p>
-                    <a href="Pages/about.html">Our story →</a>
+                    <a href="Pages/about.html">Our story</a>
                 </article>
 
                 <article class="card">
@@ -158,7 +163,7 @@
                         Send a question about a product, a bulk order
                         or delivery options.
                     </p>
-                    <a href="Pages/enquiry.html">Make an enquiry →</a>
+                    <a href="Pages/enquiry.html">Make an enquiry</a>
                 </article>
             </div>
         </div>
@@ -178,6 +183,7 @@
                     Can I ask about product availability?
                     <span class="faq-indicator">+</span>
                 </button>
+
                 <div class="faq-answer" id="faq1" hidden>
                     <p>
                         Yes. Use the enquiry form to ask about stock,
@@ -193,6 +199,7 @@
                     Do you offer delivery?
                     <span class="faq-indicator">+</span>
                 </button>
+
                 <div class="faq-answer" id="faq2" hidden>
                     <p>
                         Delivery arrangements should be confirmed
@@ -209,6 +216,7 @@
                     Can I pay online through this website?
                     <span class="faq-indicator">+</span>
                 </button>
+
                 <div class="faq-answer" id="faq3" hidden>
                     <p>
                         Online payment is not enabled in this educational
@@ -226,7 +234,7 @@
     <div class="container footer-grid">
         <div>
             <a class="brand" href="index.html" style="color:#fff">
-                <span class="brand-mark">🍃</span>
+                <span class="brand-mark" aria-hidden="true">EF</span>
                 <span>EcoFresh Grocers</span>
             </a>
             <p>Fresh choices. Local roots. Better everyday living.</p>
@@ -247,7 +255,7 @@
 </footer>
 
 <button class="back-top" type="button" aria-label="Back to top">
-    ↑ Top
+    Top
 </button>
 
 </body>

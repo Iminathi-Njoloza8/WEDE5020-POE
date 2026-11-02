@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description"
-          content="Send an enquiry to EcoFresh Grocers about product availability, pricing, bulk orders or delivery.">
-
+    <meta name="description" content="Send EcoFresh Grocers an enquiry about product availability, prices, bulk orders or delivery arrangements.">
+    <meta name="keywords" content="EcoFresh Grocers, product enquiry, grocery prices, bulk orders, delivery enquiries, Eastern Cape">
     <meta name="robots" content="index,follow">
-    <title>Enquiry | EcoFresh Grocers</title>
+
+    <link rel="canonical" href="https://iminathi-njoloza8.github.io/WEDE5020-POE/Pages/enquiry.html">
+    <title>Enquiries | EcoFresh Grocers</title>
 
     <link rel="stylesheet" href="./Assests/styles.css">
     <script src="./Assests/app.js" defer></script>
 </head>
+
 <body>
 
 <header class="site-header">
     <div class="nav-wrap">
-        <a class="brand" href="../index.html">
-            <span class="brand-mark">🍃</span>
+
+        <a class="brand" href="./index.html">
+            <span class="brand-mark" aria-hidden="true">EF</span>
             <span>EcoFresh Grocers</span>
         </a>
 
         <button class="menu-toggle" type="button"
                 aria-expanded="false"
                 aria-controls="main-navigation">
-            Menu ☰
+            Menu
         </button>
 
         <nav class="site-nav" id="main-navigation"
              aria-label="Main navigation">
-            <a href="../index.html">Home</a>
-            <a href="./about.html">About us</a>
-            <a href="./products and services.html">Products &amp; services</a>
-            <a href="./enquiry.html">Enquiries</a>
-            <a href="./contact.html">Contact</a>
+            <a href="./index.html">Home</a>
+            <a href="./Pages/about.html">About us</a>
+            <a href="./Pages/products and services.html">Products &amp; services</a>
+            <a href="./Pages/enquiry.html">Enquiries</a>
+            <a href="./Pages/contact.html">Contact</a>
+            <a href="./Pages/checkout.html" class="cart-nav-link">
+                Shopping cart
+                <span class="cart-count" aria-live="polite">0</span></a>
         </nav>
+
     </div>
 </header>
 
@@ -60,13 +67,14 @@
 
                 <p>
                     Complete the form and check that your details
-                    are correct. JavaScript validation will identify
-                    missing or incorrectly formatted information.
+                    are correct.
                 </p>
 
                 <div class="notice">
-                    This is a front-end demonstration. The form does
-                    not send data to a server or store it online.
+                    As soon as you submit your inquiry we get the email immediately
+                    and we try our best to respond as fast as we can. If you do not 
+                    recieve a response within 3 days please contact us as there 
+                    could be an error in our system.
                 </div>
 
                 <p>
@@ -107,6 +115,7 @@
                         <input id="phone" name="phone"
                                type="tel"
                                autocomplete="tel"
+                               inputmode="tel"
                                placeholder="+27..."
                                required>
                         <small class="field-error"
@@ -155,11 +164,12 @@
 
                 </div>
 
-                <button type="submit">Validate enquiry</button>
+                <button type="submit">Send enquiry</button>
 
                 <div class="form-status"
                      data-form-status
                      aria-live="polite"></div>
+
             </form>
 
         </div>
@@ -181,9 +191,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <footer class="footer">
     <div class="container footer-grid">
+
         <div>
-            <a class="brand" href="../index.html" style="color:#fff">
-                <span class="brand-mark">🍃</span>
+            <a class="brand" href="./index.html" style="color:#fff">
+                <span class="brand-mark" aria-hidden="true">EF</span>
                 <span>EcoFresh Grocers</span>
             </a>
             <p>Fresh choices. Local roots. Better everyday living.</p>
@@ -192,20 +203,20 @@ document.addEventListener("DOMContentLoaded", function () {
         <div>
             <strong>Explore</strong>
             <p>
-                <a href="./products and services.html">Products</a> ·
-                <a href="./enquiry.html">Make an enquiry</a> ·
-                <a href="./contact.html">Contact us</a>
+                <a href="./Pages/products and services.html and services.html">Products</a> ·
+                <a href="./Pages/enquiry.html">Make an enquiry</a> ·
+                <a href="./Pages/contact.html">Contact us</a>
             </p>
             <small>
                 © <span id="year">2026</span> EcoFresh Grocers.
-                Educational demonstration website.
             </small>
         </div>
+
     </div>
 </footer>
 
 <button class="back-top" type="button" aria-label="Back to top">
-    ↑ Top
+    Top
 </button>
 
 </body>

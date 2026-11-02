@@ -630,3 +630,369 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+
+// ============================================
+// ECOFRESH DEMONSTRATION SHOPPING CART
+// ============================================
+
+const CART_KEY = "ecofresh-demo-cart";
+
+const currency = function (amount) {
+    return "R " + Number(amount).toFixed(2);
+};
+
+function readCart() {
+    try {
+        return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+    } catch (error) {
+        return [];
+    }
+}
+
+function saveCart(cart) {
+    try {
+        localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    } catch (error) {
+        // Cart remains usable for the current page session.
+    }
+
+    updateCartCount(cart);
+}
+
+function updateCartCount(cart) {
+    const totalItems = cart.reduce(function (sum, item) {
+        return sum + item.quantity;
+    }, 0);
+
+    document.querySelectorAll(".cart-count").forEach(function (counter) {
+        counter.textContent = totalItems;
+    });
+}
+
+let shoppingCart = readCart();
+
+updateCartCount(shoppingCart);
+
+// ADD PRODUCTS TO CART
+document.querySelectorAll(".product-card").forEach(function (card) {
+
+    const addButton = card.querySelector(".add-to-cart");
+
+    if (!addButton) return;
+
+    addButton.addEventListener("click", function () {
+
+        const name = card.querySelector("h3")?.textContent.trim();
+        const price = Number(addButton.dataset.price);
+        const image = card.querySelector("img")?.getAttribute("src") || "";
+
+        if (!name || !Number.isFinite(price) || price <= 0) return;
+
+        const existing = shoppingCart.find(function (item) {
+            return item.name === name;
+        });
+
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            shoppingCart.push({
+                name: name,
+                price: price,
+                quantity: 1,
+                image: image
+            });
+        }
+
+        saveCart(shoppingCart);
+
+        const originalText = addButton.textContent;
+
+        addButton.textContent = "Added to cart";
+
+        window.setTimeout(function () {
+            addButton.textContent = originalText;
+        }, 1200);
+    });
+});
+
+// RENDER AND MANAGE THE CHECKOUT CART
+
+const checkoutCart = document.getElementById("checkoutCart");
+const cartSubtotal = document.getElementById("cartSubtotal");
+const cartTotal = document.getElementById("cartTotal");
+const deliveryCost = document.getElementById("deliveryCost");
+
+function renderCheckoutCart() {
+
+    if (!checkoutCart) return;
+
+    shoppingCart = readCart();
+
+    updateCartCount(shoppingCart);
+
+    checkoutCart.replaceChildren();
+
+    if (!shoppingCart.length) {
+
+        const emptyMessage = document.createElement("p");
+
+        emptyMessage.innerHTML =
+            'Your cart is currently empty. Visit the <a href="products and services.html">products page</a> to add items.';
+
+        checkoutCart.appendChild(emptyMessage);
+
+    } else {
+
+        shoppingCart.forEach(function (item, index) {
+
+            const row = document.createElement("div");
+            row.className = "checkout-item";
+
+            const details = document.createElement("div");
+
+            const name = document.createElement("div");
+            name.className = "checkout-item-name";
+            name.textContent = item.name;
+
+            const controls = document.createElement("div");
+            controls.className = "checkout-item-controls";
+
+            const minus = document.createElement("button");
+            minus.type = "button";
+            minus.textContent = "−";
+            minus.setAttribute(
+                "aria-label",
+                "Decrease " + item.name + " quantity"
+            );
+
+            minus.addEventListener("click", function () {
+                changeQuantity(index, -1);
+            });
+
+            const quantity = document.createElement("span");
+            quantity.textContent = item.quantity;
+
+            const plus = document.createElement("button");
+            plus.type = "button";
+            plus.textContent = "+";
+            plus.setAttribute(
+                "aria-label",
+                "Increase " + item.name + " quantity"
+            );
+
+            plus.addEventListener("click", function () {
+                changeQuantity(index, 1);
+            });
+
+            const remove = document.createElement("button");
+            remove.type = "button";
+            remove.className = "checkout-remove";
+            remove.textContent = "Remove";
+
+            remove.addEventListener("click", function () {
+                shoppingCart.splice(index, 1);
+                saveCart(shoppingCart);
+                renderCheckoutCart();
+            });
+
+            controls.append(minus, quantity, plus, remove);
+
+            details.append(name, controls);
+
+            const price = document.createElement("strong");
+
+            price.textContent = currency(
+                item.price * item.quantity
+            );
+
+            row.append(details, price);
+
+            checkoutCart.appendChild(row);
+        });
+    }
+
+    const subtotal = shoppingCart.reduce(function (sum, item) {
+        return sum + item.price * item.quantity;
+    }, 0);
+
+    if (cartSubtotal) {
+        cartSubtotal.textContent = currency(subtotal);
+    }
+
+    if (deliveryCost) {
+        deliveryCost.textContent = currency(0);
+    }
+
+    if (cartTotal) {
+        cartTotal.textContent = currency(subtotal);
+    }
+}
+
+// CHANGE PRODUCT QUANTITY
+
+function changeQuantity(index, amount) {
+
+    if (!shoppingCart[index]) return;
+
+    shoppingCart[index].quantity += amount;
+
+    if (shoppingCart[index].quantity <= 0) {
+        shoppingCart.splice(index, 1);
+    }
+
+    saveCart(shoppingCart);
+
+    renderCheckoutCart();
+}
+
+renderCheckoutCart();
+
+// ============================================
+// SIMULATED CHECKOUT
+// ============================================
+// Never request or store banking/card credentials.
+
+const checkoutForm = document.getElementById("checkoutForm");
+
+if (checkoutForm) {
+
+    checkoutForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const status = document.getElementById("checkoutStatus");
+
+        const requiredFields = Array.from(
+            checkoutForm.querySelectorAll("[required]")
+        );
+
+        let valid = true;
+
+        requiredFields.forEach(function (field) {
+
+            let fieldValid =
+                field.type === "checkbox"
+                    ? field.checked
+                    : Boolean(field.value.trim());
+
+            if (
+                field.type === "email" &&
+                field.value.trim()
+            ) {
+                fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+                    field.value.trim()
+                );
+            }
+
+            field.setAttribute(
+                "aria-invalid",
+                String(!fieldValid)
+            );
+
+            if (!fieldValid) {
+                valid = false;
+            }
+        });
+
+        if (!shoppingCart.length) {
+
+            valid = false;
+
+            if (status) {
+                status.className = "form-status notice error";
+                status.textContent =
+                    "Your cart is empty. Add at least one product before placing an order.";
+            }
+
+            return;
+        }
+
+        if (!valid) {
+
+            if (status) {
+                status.className = "form-status notice error";
+                status.textContent =
+                    "Please complete all required fields and confirm that you understand this is a demonstration payment.";
+            }
+
+            const firstInvalid = checkoutForm.querySelector(
+                '[aria-invalid="true"]'
+            );
+
+            if (firstInvalid) {
+                firstInvalid.focus();
+            }
+
+            return;
+        }
+
+        const formData = new FormData(checkoutForm);
+
+        const subtotal = shoppingCart.reduce(function (sum, item) {
+            return sum + item.price * item.quantity;
+        }, 0);
+
+        const orderNumber =
+            "EF-DEMO-" + Date.now().toString().slice(-8);
+
+        const confirmation =
+            document.getElementById("orderConfirmation");
+
+        const message =
+            document.getElementById("confirmationMessage");
+
+        if (message) {
+
+            message.textContent =
+                "Thank you, " +
+                formData.get("customerName") +
+                ". Your demonstration order " +
+                orderNumber +
+                " has been created with a total of " +
+                currency(subtotal) +
+                ". Payment method selected: " +
+                (
+                    formData.get("paymentMethod") === "card-demo"
+                        ? "simulated bank card"
+                        : "simulated EFT / bank transfer"
+                ) +
+                ".";
+        }
+
+        if (confirmation) {
+            confirmation.hidden = false;
+        }
+
+        if (status) {
+            status.className = "form-status notice success";
+            status.textContent =
+                "Demonstration checkout completed. No money was taken.";
+        }
+
+        shoppingCart = [];
+
+        saveCart(shoppingCart);
+
+        renderCheckoutCart();
+
+        checkoutForm.hidden = true;
+
+        if (confirmation) {
+            confirmation.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+    });
+}
+
+// PRINT ORDER SUMMARY
+
+const printOrderButton = document.getElementById("printOrder");
+
+if (printOrderButton) {
+    printOrderButton.addEventListener("click", function () {
+        window.print();
+    });
+}

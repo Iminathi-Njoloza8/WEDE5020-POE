@@ -526,8 +526,6 @@ button[type="submit"]:hover {
     display: none;
 }
 
-
-
 /* =========================================
    WEBSITE-WIDE IMAGE STYLING
    ========================================= */
@@ -797,9 +795,6 @@ img {
     }
 }
 
-
-
-
 /* FOOTER */
 
 .footer {
@@ -941,7 +936,6 @@ img {
     }
 }
 
-
 /* CONTACT PAGE GOOGLE MAP */
 
 .map-section {
@@ -999,7 +993,6 @@ img {
 }
 
 @media (max-width: 768px) {
-
     .map-section {
         padding-top: 35px;
         padding-bottom: 45px;
@@ -1010,5 +1003,258 @@ img {
         min-height: 320px;
         height: 320px;
     }
+}
 
+/* =========================================
+   PART 3 RUBRIC: INTERACTION AND IMAGES
+   ========================================= */
+
+/* Keep all content images responsive and consistent. */
+main img {
+    max-width: 100%;
+}
+
+.hero-art img,
+.about-feature-image {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+/* Smaller product images, as requested. */
+.product-image,
+.product-card img,
+.service-card img {
+    display: block;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+    background: var(--green-light);
+    transition: transform 0.25s ease;
+}
+
+.product-card:hover .product-image,
+.product-card:hover img,
+.service-card:hover img {
+    transform: scale(1.025);
+}
+
+.gallery,
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    width: 100%;
+    margin: 30px auto;
+}
+
+.gallery-item {
+    height: 220px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.gallery-item img,
+.gallery-image,
+.gallery-grid img,
+.gallery img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+main img[role="button"]:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 4px;
+}
+
+/* Responsive, keyboard-operable image viewer */
+.image-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background: rgba(10, 22, 14, 0.94);
+}
+
+.image-lightbox.open {
+    display: flex;
+}
+
+.image-lightbox-content {
+    position: relative;
+    width: min(100%, 1000px);
+    text-align: center;
+}
+
+.image-lightbox .lightbox-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 76vh;
+    margin: auto;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.image-lightbox .lightbox-caption,
+.image-lightbox .lightbox-counter {
+    color: var(--white);
+    margin: 12px 0 0;
+}
+
+.image-lightbox .lightbox-counter {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.image-lightbox button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.image-lightbox button:hover {
+    background: var(--green);
+}
+
+.image-lightbox .lightbox-close {
+    top: -54px;
+    right: 0;
+    padding: 0 14px;
+    border-radius: 8px;
+}
+
+.image-lightbox .lightbox-prev,
+.image-lightbox .lightbox-next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.image-lightbox .lightbox-prev {
+    left: -58px;
+}
+
+.image-lightbox .lightbox-next {
+    right: -58px;
+}
+
+/* Form feedback and validation visibility */
+.field-error {
+    display: block;
+    min-height: 1.2em;
+    color: var(--danger);
+    font-size: 0.88rem;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+    border-color: var(--danger);
+}
+
+.form-status:empty {
+    display: none;
+}
+
+@media (max-width: 850px) {
+    .gallery,
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .hero-art img,
+    .about-feature-image {
+        height: 290px;
+    }
+
+    .image-lightbox .lightbox-prev {
+        left: 6px;
+    }
+
+    .image-lightbox .lightbox-next {
+        right: 6px;
+    }
+}
+
+@media (max-width: 560px) {
+    .gallery,
+    .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .gallery-item {
+        height: 150px;
+    }
+
+    .gallery-item img,
+    .gallery-image,
+    .gallery-grid img,
+    .gallery img {
+        min-height: 150px;
+    }
+
+    .product-image,
+    .product-card img,
+    .service-card img {
+        height: 130px;
+    }
+
+    .hero-art img,
+    .about-feature-image {
+        height: 220px;
+    }
+
+    .image-lightbox {
+        padding: 16px;
+    }
+
+    .image-lightbox .lightbox-image {
+        max-height: 65vh;
+    }
+
+    .image-lightbox .lightbox-prev {
+        left: 4px;
+    }
+
+    .image-lightbox .lightbox-next {
+        right: 4px;
+    }
+
+    .image-lightbox .lightbox-close {
+        top: -52px;
+        right: 2px;
+    }
 }

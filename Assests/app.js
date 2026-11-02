@@ -9,19 +9,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if (menuButton && nav) {
         menuButton.addEventListener("click", function () {
             const isOpen = nav.classList.toggle("open");
+
             menuButton.setAttribute("aria-expanded", String(isOpen));
-            menuButton.textContent = isOpen ? "Close ✕" : "Menu ☰";
+            menuButton.textContent = isOpen ? "Close" : "Menu";
         });
     }
 
-    // Current year
+    // Automatically update the footer year
     const year = document.getElementById("year");
 
     if (year) {
         year.textContent = new Date().getFullYear();
     }
 
-    // Current page navigation highlight
+    // Highlight the current page in the navigation
     const currentPage = decodeURIComponent(
         window.location.pathname.split("/").pop()
     );
@@ -36,27 +37,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Product search and category filtering
+    // Live product search and category filtering
     const search = document.getElementById("productSearch");
     const category = document.getElementById("productCategory");
-    const products = document.querySelectorAll(".product-card");
+    const products = Array.from(
+        document.querySelectorAll(".product-card")
+    );
+
     const count = document.getElementById("productCount");
     const empty = document.getElementById("noProducts");
 
     function filterProducts() {
         if (!products.length) return;
 
-        const query = search ? search.value.trim().toLowerCase() : "";
+        const query = search
+            ? search.value.trim().toLocaleLowerCase()
+            : "";
+
         const selected = category ? category.value : "all";
+
         let visible = 0;
 
         products.forEach(function (product) {
-            const name = product.dataset.name || "";
-            const text = product.textContent.toLowerCase();
 
-            const matchesSearch =
-                name.toLowerCase().includes(query) ||
-                text.includes(query);
+            const searchableText = (
+                (product.dataset.name || "") + " " + product.textContent
+            ).toLocaleLowerCase();
+
+            const matchesSearch = searchableText.includes(query);
 
             const matchesCategory =
                 selected === "all" ||
@@ -66,12 +74,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             product.classList.toggle("hidden", !show);
 
-            if (show) visible++;
+            product.setAttribute(
+                "aria-hidden",
+                String(!show)
+            );
+
+            if (show) {
+                visible += 1;
+            }
         });
 
         if (count) {
             count.textContent =
-                visible + " product" + (visible === 1 ? "" : "s") + " found";
+                visible + " of " + products.length + " products shown";
         }
 
         if (empty) {
@@ -91,14 +106,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // FAQ accordion
     document.querySelectorAll(".faq-question").forEach(function (button) {
+
         button.addEventListener("click", function () {
-            const panelId = button.getAttribute("aria-controls");
-            const panel = document.getElementById(panelId);
+
+            const panel = document.getElementById(
+                button.getAttribute("aria-controls")
+            );
 
             const expanded =
                 button.getAttribute("aria-expanded") === "true";
 
-            button.setAttribute("aria-expanded", String(!expanded));
+            button.setAttribute(
+                "aria-expanded",
+                String(!expanded)
+            );
 
             if (panel) {
                 panel.hidden = expanded;
@@ -112,240 +133,170 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Service tabs
-    document.querySelectorAll("[data-tab]").forEach(function (button) {
-        button.addEventListener("click", function () {
-            const group = button.closest("[data-tabs]");
+    // Accessible service tabs
+    document.querySelectorAll("[data-tabs]").forEach(function (group, groupIndex) {
 
-            if (!group) return;
+        const tabButtons = Array.from(
+            group.querySelectorAll("[data-tab]")
+        );
 
-            group.querySelectorAll("[data-tab]").forEach(function (tab) {
-                tab.setAttribute(
-                    "aria-selected",
-                    String(tab === button)
-                );
+        const panels = Array.from(
+            group.querySelectorAll("[data-panel]")
+        );
+
+        tabButtons.forEach(function (button, index) {
+
+            const panel = panels.find(function (item) {
+                return item.dataset.panel === button.dataset.tab;
             });
 
-            group.querySelectorAll("[data-panel]").forEach(function (panel) {
-                panel.hidden = panel.dataset.panel !== button.dataset.tab;
+            if (panel) {
+
+                if (!panel.id) {
+                    panel.id =
+                        "service-panel-" + groupIndex + "-" + index;
+                }
+
+                button.setAttribute("aria-controls", panel.id);
+
+                panel.setAttribute(
+                    "aria-labelledby",
+                    button.id ||
+                    (button.id = "service-tab-" + groupIndex + "-" + index)
+                );
+            }
+
+            button.addEventListener("click", function () {
+
+                tabButtons.forEach(function (tab) {
+
+                    const active = tab === button;
+
+                    tab.setAttribute(
+                        "aria-selected",
+                        String(active)
+                    );
+
+                    tab.setAttribute(
+                        "tabindex",
+                        active ? "0" : "-1"
+                    );
+                });
+
+                panels.forEach(function (item) {
+                    item.hidden =
+                        item.dataset.panel !== button.dataset.tab;
+                });
             });
         });
     });
 
-   
-    // Image lightbox for all website pictures
+    // Site-wide image lightbox
+    // Images inside main content can be opened by mouse or keyboard.
+    const images = Array.from(
+        document.querySelectorAll("main img:not(.no-lightbox)")
+    ).filter(function (image) {
+        return !image.closest("a");
+    });
 
     let currentImageIndex = 0;
-    let galleryImages = [];
     let previousFocusedElement = null;
 
-    // Create the lightbox automatically
+    // Create the lightbox
     const lightbox = document.createElement("div");
 
-    lightbox.id = "image-lightbox";
     lightbox.className = "image-lightbox";
+    lightbox.id = "image-lightbox";
+
     lightbox.setAttribute("role", "dialog");
     lightbox.setAttribute("aria-modal", "true");
-    lightbox.setAttribute("aria-label", "Image viewer");
+    lightbox.setAttribute("aria-label", "Website image viewer");
     lightbox.setAttribute("aria-hidden", "true");
 
     lightbox.innerHTML = `
         <div class="image-lightbox-content">
 
-            <button type="button"
-                    class="lightbox-close"
-                    aria-label="Close image viewer">
-                &times;
+            <button
+                type="button"
+                class="lightbox-close"
+                aria-label="Close image viewer">
+                Close
             </button>
 
-            <button type="button"
-                    class="lightbox-prev"
-                    aria-label="Previous image">
+            <button
+                type="button"
+                class="lightbox-prev"
+                aria-label="Previous image">
                 &#10094;
             </button>
 
-            <img class="lightbox-image"
-                 src=""
-                 alt="">
+            <img
+                class="lightbox-image"
+                src=""
+                alt="">
 
-            <button type="button"
-                    class="lightbox-next"
-                    aria-label="Next image">
+            <button
+                type="button"
+                class="lightbox-next"
+                aria-label="Next image">
                 &#10095;
             </button>
 
             <p class="lightbox-caption"></p>
+
+            <p
+                class="lightbox-counter"
+                aria-live="polite">
+            </p>
 
         </div>
     `;
 
     document.body.appendChild(lightbox);
 
-    // Get lightbox elements
-    const lightboxImage = lightbox.querySelector(".lightbox-image");
-    const lightboxCaption = lightbox.querySelector(".lightbox-caption");
+    const viewerImage = lightbox.querySelector(".lightbox-image");
+    const viewerCaption = lightbox.querySelector(".lightbox-caption");
+    const viewerCounter = lightbox.querySelector(".lightbox-counter");
+
     const closeButton = lightbox.querySelector(".lightbox-close");
     const previousButton = lightbox.querySelector(".lightbox-prev");
     const nextButton = lightbox.querySelector(".lightbox-next");
 
-    // Add lightbox styling
-    const lightboxStyles = document.createElement("style");
+    // Display the selected image
+    function showImage(index) {
 
-    lightboxStyles.textContent = `
-        .image-lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            background: rgba(0, 0, 0, 0.93);
-            justify-content: center;
-            align-items: center;
-            padding: 25px;
-        }
-
-        .image-lightbox.open {
-            display: flex;
-        }
-
-        .image-lightbox-content {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            text-align: center;
-        }
-
-        .lightbox-image {
-            display: block;
-            max-width: 100%;
-            max-height: 78vh;
-            width: auto;
-            height: auto;
-            margin: auto;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-
-        .lightbox-caption {
-            color: white;
-            font-size: 16px;
-            margin-top: 15px;
-        }
-
-        .image-lightbox button {
-            position: absolute;
-            border: none;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            cursor: pointer;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background 0.3s ease;
-        }
-
-        .image-lightbox button:hover {
-            background: #398343;
-        }
-
-        .lightbox-close {
-            top: -45px;
-            right: 0;
-            width: 42px;
-            height: 42px;
-            font-size: 28px;
-        }
-
-        .lightbox-prev,
-        .lightbox-next {
-            top: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 25px;
-            transform: translateY(-50%);
-        }
-
-        .lightbox-prev {
-            left: -60px;
-        }
-
-        .lightbox-next {
-            right: -60px;
-        }
-
-        main img:not([data-no-lightbox]):not(.no-lightbox) {
-            cursor: zoom-in;
-        }
-
-        @media (max-width: 600px) {
-            .lightbox-prev {
-                left: 5px;
-            }
-
-            .lightbox-next {
-                right: 5px;
-            }
-
-            .lightbox-image {
-                max-height: 65vh;
-            }
-
-            .lightbox-close {
-                right: 5px;
-                top: -50px;
-            }
-        }
-    `;
-
-    document.head.appendChild(lightboxStyles);
-
-    // Find all pictures on the website
-    function getGalleryImages() {
-        return Array.from(
-            document.querySelectorAll("img")
-        ).filter(function (image) {
-            return !image.closest("#image-lightbox") &&
-                   !image.classList.contains("no-lightbox") &&
-                   image.dataset.noLightbox !== "true";
-        });
-    }
-
-    // Display the selected picture
-    function showLightboxImage(index) {
-
-        if (galleryImages.length === 0) return;
+        if (!images.length) return;
 
         currentImageIndex =
-            (index + galleryImages.length) % galleryImages.length;
+            (index + images.length) % images.length;
 
-        const selectedImage = galleryImages[currentImageIndex];
+        const selected = images[currentImageIndex];
 
-        lightboxImage.src =
-            selectedImage.currentSrc || selectedImage.src;
+        viewerImage.src =
+            selected.currentSrc || selected.src;
 
-        lightboxImage.alt =
-            selectedImage.alt || "EcoFresh Grocers picture";
+        viewerImage.alt =
+            selected.alt || "EcoFresh Grocers image";
 
-        lightboxCaption.textContent =
-            selectedImage.dataset.caption ||
-            selectedImage.alt ||
+        viewerCaption.textContent =
+            selected.dataset.caption ||
+            selected.alt ||
             "EcoFresh Grocers";
+
+        viewerCounter.textContent =
+            "Image " + (currentImageIndex + 1) +
+            " of " + images.length;
     }
 
     // Open the lightbox
-    function openLightbox(image) {
-
-        galleryImages = getGalleryImages();
-
-        currentImageIndex = galleryImages.indexOf(image);
-
-        if (currentImageIndex === -1) return;
+    function openLightbox(index) {
 
         previousFocusedElement = document.activeElement;
 
-        showLightboxImage(currentImageIndex);
+        showImage(index);
 
         lightbox.classList.add("open");
+
         lightbox.setAttribute("aria-hidden", "false");
 
         document.body.style.overflow = "hidden";
@@ -357,61 +308,74 @@ document.addEventListener("DOMContentLoaded", function () {
     function closeLightbox() {
 
         lightbox.classList.remove("open");
+
         lightbox.setAttribute("aria-hidden", "true");
 
         document.body.style.overflow = "";
 
-        lightboxImage.src = "";
+        viewerImage.removeAttribute("src");
 
-        if (previousFocusedElement) {
+        if (
+            previousFocusedElement &&
+            typeof previousFocusedElement.focus === "function"
+        ) {
             previousFocusedElement.focus();
         }
     }
 
-    // Allow users to click any picture to open it
-    document.addEventListener("click", function (event) {
+    // Make images clickable and keyboard accessible
+    images.forEach(function (image, index) {
 
-        const image = event.target.closest("img");
+        image.setAttribute("tabindex", "0");
 
-        if (!image) return;
+        image.setAttribute("role", "button");
 
-        if (
-            image.closest("#image-lightbox") ||
-            image.classList.contains("no-lightbox") ||
-            image.dataset.noLightbox === "true"
-        ) {
-            return;
-        }
+        image.setAttribute(
+            "aria-label",
+            "Open image: " +
+            (image.alt || "EcoFresh Grocers picture")
+        );
 
-        // Prevent a linked picture from navigating away
-        event.preventDefault();
+        image.addEventListener("click", function () {
 
-        openLightbox(image);
+            if (image.closest("a")) return;
+
+            openLightbox(index);
+        });
+
+        image.addEventListener("keydown", function (event) {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+                event.preventDefault();
+
+                openLightbox(index);
+            }
+        });
     });
 
-    // Previous picture
-    previousButton.addEventListener("click", function () {
-        showLightboxImage(currentImageIndex - 1);
-    });
-
-    // Next picture
-    nextButton.addEventListener("click", function () {
-        showLightboxImage(currentImageIndex + 1);
-    });
-
-    // Close button
+    // Lightbox buttons
     closeButton.addEventListener("click", closeLightbox);
 
-    // Close when clicking outside the picture
+    previousButton.addEventListener("click", function () {
+        showImage(currentImageIndex - 1);
+    });
+
+    nextButton.addEventListener("click", function () {
+        showImage(currentImageIndex + 1);
+    });
+
+    // Close when clicking outside the image
     lightbox.addEventListener("click", function (event) {
 
         if (event.target === lightbox) {
             closeLightbox();
         }
-
     });
 
-    // Keyboard controls
+    // Keyboard controls for the lightbox
     document.addEventListener("keydown", function (event) {
 
         if (!lightbox.classList.contains("open")) return;
@@ -421,75 +385,174 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (event.key === "ArrowRight") {
-            showLightboxImage(currentImageIndex + 1);
+            showImage(currentImageIndex + 1);
         }
 
         if (event.key === "ArrowLeft") {
-            showLightboxImage(currentImageIndex - 1);
+            showImage(currentImageIndex - 1);
         }
 
+        if (event.key === "Tab") {
+
+            const controls = [
+                closeButton,
+                previousButton,
+                nextButton
+            ];
+
+            const first = controls[0];
+            const last = controls[controls.length - 1];
+
+            if (
+                event.shiftKey &&
+                document.activeElement === first
+            ) {
+                event.preventDefault();
+                last.focus();
+
+            } else if (
+                !event.shiftKey &&
+                document.activeElement === last
+            ) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
     });
 
-
-    // Form validation
+    // Enquiry and contact form validation
     document.querySelectorAll("form[data-validate]").forEach(function (form) {
+
+        const fields = Array.from(
+            form.querySelectorAll("input, select, textarea")
+        );
+
+        fields.forEach(function (field) {
+
+            const error = form.querySelector(
+                '[data-error-for="' + field.id + '"]'
+            );
+
+            if (error) {
+
+                if (!error.id) {
+                    error.id = field.id + "-error";
+                }
+
+                field.setAttribute(
+                    "aria-describedby",
+                    error.id
+                );
+            }
+
+            field.addEventListener("input", function () {
+
+                if (field.getAttribute("aria-invalid") === "true") {
+                    validateField(field, form);
+                }
+            });
+
+            field.addEventListener("change", function () {
+
+                if (field.getAttribute("aria-invalid") === "true") {
+                    validateField(field, form);
+                }
+            });
+        });
+
+        // Validate individual form fields
+        function validateField(field, currentForm) {
+
+            const error = currentForm.querySelector(
+                '[data-error-for="' + field.id + '"]'
+            );
+
+            const value =
+                typeof field.value === "string"
+                    ? field.value.trim()
+                    : "";
+
+            let message = "";
+
+            if (
+                field.required &&
+                field.type === "checkbox" &&
+                !field.checked
+            ) {
+                message =
+                    "Please confirm this checkbox to continue.";
+
+            } else if (field.required && !value) {
+
+                message = "This field is required.";
+
+            } else if (
+                field.type === "email" &&
+                value &&
+                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+            ) {
+
+                message =
+                    "Enter a valid email address, for example name@example.com.";
+
+            } else if (
+                field.type === "tel" &&
+                value &&
+                !/^[+()\d\s-]{7,20}$/.test(value)
+            ) {
+
+                message =
+                    "Enter a valid phone number, including the country code if applicable.";
+
+            } else if (
+                field.minLength > 0 &&
+                value &&
+                value.length < field.minLength
+            ) {
+
+                message =
+                    "Please enter at least " +
+                    field.minLength +
+                    " characters.";
+            }
+
+            if (error) {
+                error.textContent = message;
+            }
+
+            field.setAttribute(
+                "aria-invalid",
+                String(Boolean(message))
+            );
+
+            return !message;
+        }
+
+        // Validate the form when submitted
         form.addEventListener("submit", function (event) {
+
             event.preventDefault();
 
             const status = form.querySelector("[data-form-status]");
+
             let valid = true;
 
-            form.querySelectorAll(".field-error").forEach(function (error) {
-                error.textContent = "";
-            });
+            fields.forEach(function (field) {
 
-            form.querySelectorAll("[required]").forEach(function (field) {
-                const error = form.querySelector(
-                    '[data-error-for="' + field.id + '"]'
-                );
-
-                let message = "";
-
-                if (field.type === "checkbox" && !field.checked) {
-                    message = "Please confirm this checkbox.";
-                } else if (!field.value.trim()) {
-                    message = "This field is required.";
-                } else if (
-                    field.type === "email" &&
-                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim())
-                ) {
-                    message = "Please enter a valid email address.";
-                } else if (
-                    field.type === "tel" &&
-                    !/^[+()\d\s-]{7,20}$/.test(field.value.trim())
-                ) {
-                    message = "Please enter a valid telephone number.";
-                } else if (
-                    field.minLength > 0 &&
-                    field.value.trim().length < field.minLength
-                ) {
-                    message =
-                        "Please enter at least " +
-                        field.minLength +
-                        " characters.";
-                }
-
-                if (error) {
-                    error.textContent = message;
-                }
-
-                field.setAttribute("aria-invalid", String(Boolean(message)));
-
-                if (message) {
+                if (!validateField(field, form)) {
                     valid = false;
                 }
             });
 
             if (!valid) {
+
                 if (status) {
-                    status.className = "notice error";
+
+                    status.className =
+                        "form-status notice error";
+
                     status.textContent =
-                        "Please correct the highlighted fields and try again.";
+                        "Please correct the highlighted fields and submit the form again.";
                 }
 
                 const firstInvalid = form.querySelector(
@@ -508,44 +571,57 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (status) {
-                status.className = "notice success";
 
-                if (form.dataset.formType === "enquiry") {
-                    status.textContent =
-                        "Thank you, " + (data.name || "customer") +
-                        "! Your enquiry has been validated. This demonstration " +
-                        "website does not send or store form submissions online.";
-                } else {
-                    status.textContent =
-                        "Thank you, " + (data.name || "customer") +
-                        "! Your message has been validated. Connect an email " +
-                        "service or backend to send messages automatically.";
-                }
+                status.className =
+                    "form-status notice success";
+
+                status.textContent =
+                    "Thank you, " +
+                    (data.name || "customer") +
+                    ". Your " +
+                    (
+                        form.dataset.formType === "enquiry"
+                            ? "enquiry"
+                            : "message"
+                    ) +
+                    " passed validation. This student project is a front-end demonstration; it does not send or store submissions online.";
             }
 
             form.reset();
 
-            form.querySelectorAll("[aria-invalid]").forEach(function (field) {
+            fields.forEach(function (field) {
                 field.removeAttribute("aria-invalid");
+            });
+
+            form.querySelectorAll(".field-error").forEach(function (error) {
+                error.textContent = "";
             });
         });
     });
 
-    // Back-to-top button
+    // Back-to-top control
     const topButton = document.querySelector(".back-top");
 
     if (topButton) {
+
         function updateTopButton() {
-            topButton.classList.toggle("show", window.scrollY > 450);
+
+            topButton.classList.toggle(
+                "show",
+                window.scrollY > 450
+            );
         }
 
-        window.addEventListener("scroll", updateTopButton, {
-            passive: true
-        });
+        window.addEventListener(
+            "scroll",
+            updateTopButton,
+            { passive: true }
+        );
 
         updateTopButton();
 
         topButton.addEventListener("click", function () {
+
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"

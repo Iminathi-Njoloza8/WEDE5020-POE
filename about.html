@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description"
-          content="Learn about EcoFresh Grocers, a fictional local grocery business focused on fresh produce and community values.">
-
+    <meta name="description" content="Learn about EcoFresh Grocers, a fictional South African grocery business established in 2022 and focused on fresh produce, local suppliers and community values.">
+    <meta name="keywords" content="EcoFresh Grocers, about us, local grocery business, fresh produce, King William’s Town, Eastern Cape">
     <meta name="robots" content="index,follow">
+
+    <link rel="canonical" href="https://iminathi-njoloza8.github.io/WEDE5020-POE/Pages/about.html">
     <title>About us | EcoFresh Grocers</title>
 
     <link rel="stylesheet" href="./Assests/styles.css">
@@ -17,24 +18,27 @@
 
 <header class="site-header">
     <div class="nav-wrap">
-        <a class="brand" href="../index.html">
-            <span class="brand-mark">🍃</span>
+        <a class="brand" href="./index.html">
+            <span class="brand-mark" aria-hidden="true">EF</span>
             <span>EcoFresh Grocers</span>
         </a>
 
         <button class="menu-toggle" type="button"
                 aria-expanded="false"
                 aria-controls="main-navigation">
-            Menu ☰
+            Menu
         </button>
 
         <nav class="site-nav" id="main-navigation"
              aria-label="Main navigation">
-            <a href="../index.html">Home</a>
-            <a href="./about.html">About us</a>
-            <a href="./products and services.html">Products &amp; services</a>
-            <a href="./enquiry.html">Enquiries</a>
-            <a href="./contact.html">Contact</a>
+            <a href="./index.html">Home</a>
+            <a href="./Pages/about.html">About us</a>
+            <a href="./Pages/products and services.html">Products &amp; services</a>
+            <a href="./Pages/enquiry.html">Enquiries</a>
+            <a href="./Pages/contact.html">Contact</a>
+            <a href="./Pages/checkout.html" class="cart-nav-link">
+                Shopping cart
+                <span class="cart-count" aria-live="polite">0</span></a>
         </nav>
     </div>
 </header>
@@ -55,12 +59,10 @@
     <section class="section">
         <div class="container form-layout">
             <div>
-                <div class="hero-art"
-                     style="min-height:260px;font-size:5rem"
-                     role="img"
-                     aria-label="Fresh produce illustration">
-                    🥦🍐🥕
-                </div>
+                <img class="about-feature-image"
+                     src="./Assests/images/home_page.webp"
+                     alt="Fresh fruit and vegetables representing EcoFresh Grocers"
+                     loading="lazy">
             </div>
 
             <div>
@@ -101,7 +103,7 @@
 
             <div class="cards">
                 <article class="card">
-                    <div class="icon-tile">🌿</div>
+                    <div class="icon-tile" aria-hidden="true">01</div>
                     <h3>Freshness</h3>
                     <p>
                         Make fresh produce a practical part
@@ -110,7 +112,7 @@
                 </article>
 
                 <article class="card">
-                    <div class="icon-tile">🤝</div>
+                    <div class="icon-tile" aria-hidden="true">02</div>
                     <h3>Community</h3>
                     <p>
                         Build relationships with customers
@@ -119,7 +121,7 @@
                 </article>
 
                 <article class="card">
-                    <div class="icon-tile">💚</div>
+                    <div class="icon-tile" aria-hidden="true">03</div>
                     <h3>Care</h3>
                     <p>
                         Offer clear information and helpful
@@ -135,62 +137,48 @@
             <div class="section-heading">
                 <h2>A closer look at fresh food</h2>
                 <p>
-                    Select an image tile to view it in a larger lightbox.
+                    Explore our fresh produce collection.
+                    Click on an image to view it in a larger size.
                 </p>
             </div>
 
             <div class="gallery">
-                <button type="button"
-                        data-gallery-item
-                        data-visual="🍎"
-                        data-caption="Fresh apples"
-                        aria-label="View fresh apples">
-                    🍎
-                </button>
 
-                <button type="button"
-                        data-gallery-item
-                        data-visual="🥕"
-                        data-caption="Crisp carrots"
-                        aria-label="View crisp carrots">
-                    🥕
-                </button>
+                <div class="gallery-item">
+                    <img
+                        src="./Assests/images/Oranges.webp"
+                        alt="Fresh oranges"
+                        class="gallery-image"
+                        data-caption="Fresh oranges">
+                </div>
 
-                <button type="button"
-                        data-gallery-item
-                        data-visual="🥬"
-                        data-caption="Leafy greens"
-                        aria-label="View leafy greens">
-                    🥬
-                </button>
+                <div class="gallery-item">
+                    <img
+                        src="./Assests/images/potatoes.webp"
+                        alt="Fresh potatoes"
+                        class="gallery-image"
+                        data-caption="Fresh potatoes">
+                </div>
+
+                <div class="gallery-item">
+                    <img
+                        src="./Assests/images/leafy_greens.webp"
+                        alt="Fresh leafy greens"
+                        class="gallery-image"
+                        data-caption="Fresh leafy greens">
+                </div>
+
             </div>
         </div>
     </section>
-
-    <div class="lightbox" id="lightbox"
-         role="dialog"
-         aria-modal="true"
-         aria-hidden="true"
-         aria-label="Gallery image">
-        <div class="lightbox-content">
-            <button class="lightbox-close"
-                    type="button"
-                    aria-label="Close image">
-                Close ✕
-            </button>
-
-            <div class="lightbox-visual">🍎</div>
-            <h2 class="lightbox-caption">Fresh produce</h2>
-        </div>
-    </div>
 
 </main>
 
 <footer class="footer">
     <div class="container footer-grid">
         <div>
-            <a class="brand" href="../index.html" style="color:#fff">
-                <span class="brand-mark">🍃</span>
+            <a class="brand" href="./index.html" style="color:#fff">
+                <span class="brand-mark" aria-hidden="true">EF</span>
                 <span>EcoFresh Grocers</span>
             </a>
             <p>Fresh choices. Local roots. Better everyday living.</p>
@@ -199,20 +187,19 @@
         <div>
             <strong>Explore</strong>
             <p>
-                <a href="./products and services.html">Products</a> ·
-                <a href="./enquiry.html">Make an enquiry</a> ·
-                <a href="./contact.html">Contact us</a>
+                <a href="./Pages/products and services.html">Products</a> ·
+                <a href="./Pages/enquiry.html">Make an enquiry</a> ·
+                <a href="./Pages/contact.html">Contact us</a>
             </p>
             <small>
                 © <span id="year">2026</span> EcoFresh Grocers.
-                Educational demonstration website.
             </small>
         </div>
     </div>
 </footer>
 
 <button class="back-top" type="button" aria-label="Back to top">
-    ↑ Top
+    Top
 </button>
 
 </body>

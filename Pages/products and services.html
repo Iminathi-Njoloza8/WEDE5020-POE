@@ -1,32 +1,36 @@
 
+
 <!DOCTYPE html>
 <html lang="en-ZA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description"
-          content="Search and filter sample EcoFresh Grocers fruit, vegetables and pantry essentials.">
-
+    <meta name="description" content="Explore the EcoFresh Grocers sample catalogue of fresh fruit, vegetables and pantry essentials, and learn about product availability, bulk orders and delivery enquiries.">
+    <meta name="keywords" content="EcoFresh Grocers, grocery products, fresh fruit, vegetables, pantry essentials, grocery services, product search">
     <meta name="robots" content="index,follow">
+
+    <link rel="canonical" href="https://iminathi-njoloza8.github.io/WEDE5020-POE/Pages/products%20and%20services.html">
     <title>Products and services | EcoFresh Grocers</title>
 
     <link rel="stylesheet" href="../Assests/styles.css">
     <script src="../Assests/app.js" defer></script>
 </head>
+
 <body>
 
 <header class="site-header">
     <div class="nav-wrap">
+
         <a class="brand" href="../index.html">
-            <span class="brand-mark">🍃</span>
+            <span class="brand-mark" aria-hidden="true">EF</span>
             <span>EcoFresh Grocers</span>
         </a>
 
         <button class="menu-toggle" type="button"
                 aria-expanded="false"
                 aria-controls="main-navigation">
-            Menu ☰
+            Menu
         </button>
 
         <nav class="site-nav" id="main-navigation"
@@ -37,6 +41,7 @@
             <a href="./enquiry.html">Enquiries</a>
             <a href="./contact.html">Contact</a>
         </nav>
+
     </div>
 </header>
 
@@ -58,15 +63,17 @@
 
             <div class="notice">
                 <strong>Important Notice:</strong>
-                Prices of our products tend to change during festive seasons.
-                Please pay mind to that.
+                Prices of our products may change during festive
+                seasons. Please confirm prices before ordering.
             </div>
 
             <div class="product-tools">
+
                 <label>
                     <span class="hidden">Search products</span>
                     <input id="productSearch"
                            type="search"
+                           autocomplete="off"
                            placeholder="Search products..."
                            aria-label="Search products">
                 </label>
@@ -88,6 +95,7 @@
                       style="align-self:center">
                     Products found
                 </span>
+
             </div>
 
             <div class="cards" id="productList">
@@ -95,13 +103,16 @@
                 <article class="card product-card"
                          data-name="apples"
                          data-category="fruit">
-                    <img class="product-image" 
-                        src="../Assests/images/Fresh_Apples.webp" 
-                        alt="Fresh apples" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/Fresh_Apples.webp"
+                         alt="Fresh apples"
+                         loading="lazy">
+
                     <h3>Fresh apples</h3>
                     <p>Crunchy fruit for lunchboxes and snacks.</p>
                     <p class="price">R 24.99 / bag</p>
+
                     <a class="button"
                        href="enquiry.html?product=Fresh%20apples">
                         Enquire
@@ -111,13 +122,16 @@
                 <article class="card product-card"
                          data-name="bananas"
                          data-category="fruit">
-                    <img class="product-image" 
-                        src="../Assests/images/Bananas.webp" 
-                        alt="Banana" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/Bananas.webp"
+                         alt="Fresh bananas"
+                         loading="lazy">
+
                     <h3>Bananas</h3>
                     <p>A convenient everyday fruit.</p>
                     <p class="price">R 19.99 / bunch</p>
+
                     <a class="button"
                        href="enquiry.html?product=Bananas">
                         Enquire
@@ -127,13 +141,16 @@
                 <article class="card product-card"
                          data-name="oranges"
                          data-category="fruit">
-                    <img class="product-image" 
-                        src="../Assests/images/Oranges.webp" 
-                        alt="Oranges" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/Oranges.webp"
+                         alt="Fresh oranges"
+                         loading="lazy">
+
                     <h3>Oranges</h3>
                     <p>Juicy citrus for a refreshing snack.</p>
                     <p class="price">R 29.99 / bag</p>
+
                     <a class="button"
                        href="enquiry.html?product=Oranges">
                         Enquire
@@ -143,13 +160,16 @@
                 <article class="card product-card"
                          data-name="carrots"
                          data-category="vegetables">
-                    <img class="product-image" 
-                        src="../Assests/images/carrots.webp" 
-                        alt="Carrots" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/carrots.webp"
+                         alt="Fresh carrots"
+                         loading="lazy">
+
                     <h3>Carrots</h3>
                     <p>Versatile vegetables for salads and cooking.</p>
                     <p class="price">R 14.99 / bag</p>
+
                     <a class="button"
                        href="enquiry.html?product=Carrots">
                         Enquire
@@ -159,13 +179,16 @@
                 <article class="card product-card"
                          data-name="spinach"
                          data-category="vegetables">
-                    <img class="product-image" 
-                        src="../Assests/images/leafy_greens.webp" 
-                        alt="Leafy Greens" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/leafy_greens.webp"
+                         alt="Fresh leafy greens"
+                         loading="lazy">
+
                     <h3>Leafy greens</h3>
                     <p>Greens for sides, soups and family meals.</p>
                     <p class="price">R 12.99 / bunch</p>
+
                     <a class="button"
                        href="enquiry.html?product=Leafy%20greens">
                         Enquire
@@ -175,13 +198,16 @@
                 <article class="card product-card"
                          data-name="potatoes"
                          data-category="vegetables">
-                    <img class="product-image" 
-                        src="../Assests/images/potatoes.webp" 
-                        alt="Potatoes" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/potatoes.webp"
+                         alt="Fresh potatoes"
+                         loading="lazy">
+
                     <h3>Potatoes</h3>
                     <p>A staple for a wide range of meals.</p>
                     <p class="price">R 34.99 / bag</p>
+
                     <a class="button"
                        href="enquiry.html?product=Potatoes">
                         Enquire
@@ -191,13 +217,16 @@
                 <article class="card product-card"
                          data-name="rice"
                          data-category="pantry">
-                    <img class="product-image" 
-                        src="../Assests/images/rice.webp" 
-                        alt="Rice" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/rice.webp"
+                         alt="Pack of rice"
+                         loading="lazy">
+
                     <h3>Rice</h3>
                     <p>A cupboard essential for everyday cooking.</p>
                     <p class="price">R 29.99 / pack</p>
+
                     <a class="button"
                        href="enquiry.html?product=Rice">
                         Enquire
@@ -207,13 +236,16 @@
                 <article class="card product-card"
                          data-name="oats"
                          data-category="pantry">
-                    <img class="product-image" 
-                        src="../Assests/images/oats.webp" 
-                        alt="Oats" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/oats.webp"
+                         alt="Pack of breakfast oats"
+                         loading="lazy">
+
                     <h3>Breakfast oats</h3>
                     <p>A simple pantry option for breakfast.</p>
                     <p class="price">R 26.99 / pack</p>
+
                     <a class="button"
                        href="enquiry.html?product=Breakfast%20oats">
                         Enquire
@@ -223,13 +255,16 @@
                 <article class="card product-card"
                          data-name="cooking oil"
                          data-category="pantry">
-                    <img class="product-image" 
-                        src="../Assests/images/cooking_oil.webp" 
-                        alt="Cooking Oil" 
-                        loading="lazy">
+
+                    <img class="product-image"
+                         src="../Assests/images/cooking_oil.webp"
+                         alt="Bottle of cooking oil"
+                         loading="lazy">
+
                     <h3>Cooking oil</h3>
                     <p>An everyday ingredient for home cooking.</p>
                     <p class="price">R 39.99 / bottle</p>
+
                     <a class="button"
                        href="enquiry.html?product=Cooking%20oil">
                         Enquire
@@ -238,7 +273,9 @@
 
             </div>
 
-            <p id="noProducts" class="notice hidden" role="status">
+            <p id="noProducts"
+               class="notice hidden"
+               role="status">
                 No products match your search.
                 Try another name or category.
             </p>
@@ -248,6 +285,7 @@
 
     <section class="section section-soft">
         <div class="container">
+
             <div class="section-heading">
                 <h2>Our service approach</h2>
                 <p>
@@ -257,29 +295,35 @@
             </div>
 
             <div data-tabs>
+
                 <div class="tabs" role="tablist"
                      aria-label="Service information">
 
-                    <button type="button" role="tab"
+                    <button type="button"
+                            role="tab"
                             data-tab="availability"
                             aria-selected="true">
                         Availability
                     </button>
 
-                    <button type="button" role="tab"
+                    <button type="button"
+                            role="tab"
                             data-tab="bulk"
                             aria-selected="false">
                         Bulk orders
                     </button>
 
-                    <button type="button" role="tab"
+                    <button type="button"
+                            role="tab"
                             data-tab="delivery"
                             aria-selected="false">
                         Delivery
                     </button>
+
                 </div>
 
-                <div class="tab-panel" data-panel="availability">
+                <div class="tab-panel"
+                     data-panel="availability">
                     <h3>Seasonal availability</h3>
                     <p>
                         Some fresh products vary with season and
@@ -288,7 +332,9 @@
                     </p>
                 </div>
 
-                <div class="tab-panel" data-panel="bulk" hidden>
+                <div class="tab-panel"
+                     data-panel="bulk"
+                     hidden>
                     <h3>Bulk orders</h3>
                     <p>
                         For events or larger household orders,
@@ -297,7 +343,9 @@
                     </p>
                 </div>
 
-                <div class="tab-panel" data-panel="delivery" hidden>
+                <div class="tab-panel"
+                     data-panel="delivery"
+                     hidden>
                     <h3>Delivery enquiries</h3>
                     <p>
                         Ask whether delivery is available in your area.
@@ -305,6 +353,7 @@
                         confirmed directly.
                     </p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -313,9 +362,10 @@
 
 <footer class="footer">
     <div class="container footer-grid">
+
         <div>
             <a class="brand" href="../index.html" style="color:#fff">
-                <span class="brand-mark">🍃</span>
+                <span class="brand-mark" aria-hidden="true">EF</span>
                 <span>EcoFresh Grocers</span>
             </a>
             <p>Fresh choices. Local roots. Better everyday living.</p>
@@ -332,11 +382,12 @@
                 © <span id="year">2026</span> EcoFresh Grocers.
             </small>
         </div>
+
     </div>
 </footer>
 
 <button class="back-top" type="button" aria-label="Back to top">
-    ↑ Top
+    Top
 </button>
 
 </body>

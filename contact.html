@@ -4,38 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description"
-          content="Contact EcoFresh Grocers with a general question, feedback or product issue.">
-
+    <meta name="description" content="Contact EcoFresh Grocers with a general question, feedback or product issue. Find our approximate location in King William’s Town, Eastern Cape.">
+    <meta name="keywords" content="EcoFresh Grocers, contact, grocery enquiries, King William’s Town, Eastern Cape, customer support">
     <meta name="robots" content="index,follow">
+
+    <link rel="canonical" href="https://iminathi-njoloza8.github.io/WEDE5020-POE/Pages/contact.html">
     <title>Contact us | EcoFresh Grocers</title>
 
     <link rel="stylesheet" href="./Assests/styles.css">
     <script src="./Assests/app.js" defer></script>
 </head>
+
 <body>
 
 <header class="site-header">
     <div class="nav-wrap">
-        <a class="brand" href="../index.html">
-            <span class="brand-mark">🍃</span>
+
+        <a class="brand" href="./index.html">
+            <span class="brand-mark" aria-hidden="true">EF</span>
             <span>EcoFresh Grocers</span>
         </a>
 
         <button class="menu-toggle" type="button"
                 aria-expanded="false"
                 aria-controls="main-navigation">
-            Menu ☰
+            Menu
         </button>
 
         <nav class="site-nav" id="main-navigation"
              aria-label="Main navigation">
-            <a href="../index.html">Home</a>
-            <a href="./about.html">About us</a>
-            <a href="./products and services.html">Products &amp; services</a>
-            <a href="./enquiry.html">Enquiries</a>
-            <a href="./contact.html">Contact</a>
+            <a href="./index.html">Home</a>
+            <a href="./Pages/about.html">About us</a>
+            <a href="./Pages/products and services.html">Products &amp; services</a>
+            <a href="./Pages/enquiry.html">Enquiries</a>
+            <a href="./Pages/contact.html">Contact</a>
+            <a href="./Pages/checkout.html" class="cart-nav-link">
+                Shopping cart
+                <span class="cart-count" aria-live="polite">0</span></a>
         </nav>
+
     </div>
 </header>
 
@@ -58,29 +65,47 @@
                 <h2>Contact information</h2>
 
                 <div class="card">
-                    <h3>📍 Location</h3>
+                    <h3>Location</h3>
                     <p>
                         King William's Town, Eastern Cape,
                         South Africa
                     </p>
 
-                    <h3>🕘 Business hours</h3>
-                    <p>
-                        Hours are not published for this academic
-                        prototype. Please enquire before visiting.
-                    </p>
+                    <h3>Business hours</h3>
+                    <ul>
+                        <li>Online enquiries: 24 hours.</li>
+                        <li>Store hours: 8:00 a.m. – 4:30 p.m.</li>
+                        <li>
+                            Please enquire with the store online
+                            before visiting.
+                        </li>
+                    </ul>
 
-                    <h3>✉️ General messages</h3>
+                    <h3>General messages</h3>
                     <p>
                         Use the contact form to prepare a message
                         for the organisation.
                     </p>
-                </div>
 
-                <div class="notice">
-                    No real phone number or email address has been
-                    supplied for this fictional business, so none
-                    has been invented.
+                    <h3>Phone number and email</h3>
+                    <ul>
+                        <li>
+                            <a href="tel:+27638401263">
+                                +27 638401263
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:ecofreshgrocers@gmail.com">
+                                ecofreshgrocers@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=King+William%27s+Town+Eastern+Cape+South+Africa"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Get directions
+                    </a>
                 </div>
             </div>
 
@@ -144,12 +169,50 @@
                            data-error-for="consent"></small>
                 </div>
 
-                <button type="submit">Validate message</button>
+                <button type="submit">Send message</button>
 
                 <div class="form-status"
                      data-form-status
                      aria-live="polite"></div>
+
             </form>
+        </div>
+    </section>
+
+    <section class="section map-section">
+        <div class="container">
+
+            <div class="map-heading">
+                <span class="eyebrow">Find us</span>
+                <h2>Find EcoFresh Grocers</h2>
+                <p class="muted">
+                    View the approximate town-centre location in
+                    King William's Town, Eastern Cape. The fictional
+                    project does not have a verified street address.
+                </p>
+            </div>
+
+            <div class="map-container">
+                <iframe
+                    title="Google Maps showing King William's Town, Eastern Cape"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps?q=King%20William%27s%20Town%2C%20Eastern%20Cape%2C%20South%20Africa&amp;output=embed"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="map-directions">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=King+William%27s+Town+Eastern+Cape+South+Africa"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="directions-button">
+                    Get directions to our location
+                </a>
+            </div>
 
         </div>
     </section>
@@ -158,31 +221,35 @@
 
 <footer class="footer">
     <div class="container footer-grid">
+
         <div>
-            <a class="brand" href="../index.html" style="color:#fff">
-                <span class="brand-mark">🍃</span>
+            <a class="brand" href="./index.html" style="color:#fff">
+                <span class="brand-mark" aria-hidden="true">EF</span>
                 <span>EcoFresh Grocers</span>
             </a>
-            <p>Fresh choices. Local roots. Better everyday living.</p>
+            <p>
+                Fresh choices. Local roots.
+                Better everyday living.
+            </p>
         </div>
 
         <div>
             <strong>Explore</strong>
             <p>
-                <a href="./products and services.html">Products</a> ·
-                <a href="./enquiry.html">Make an enquiry</a> ·
-                <a href="./contact.html">Contact us</a>
+                <a href="./Pages/products and services.html">Products</a> ·
+                <a href="./Pages/enquiry.html">Make an enquiry</a> ·
+                <a href="./Pages/contact.html">Contact us</a>
             </p>
             <small>
                 © <span id="year">2026</span> EcoFresh Grocers.
-                Educational demonstration website.
             </small>
         </div>
+
     </div>
 </footer>
 
 <button class="back-top" type="button" aria-label="Back to top">
-    ↑ Top
+    Top
 </button>
 
 </body>

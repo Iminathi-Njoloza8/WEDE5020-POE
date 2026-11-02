@@ -1,63 +1,132 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>EcoFresh Grocers | Sitemap</title>
+    <meta name="description" content="Explore the EcoFresh Grocers website sitemap and find links to all main website pages.">
+    <meta name="keywords" content="EcoFresh Grocers, website sitemap, home, about, products, services, contact, enquiries">
+    <meta name="robots" content="index,follow">
 
-    <link rel="stylesheet" href="Assests/styles.css">
+    <title>Website Sitemap | EcoFresh Grocers</title>
+
+    <link rel="stylesheet" href="./Assests/styles.css">
+    <script src="./Assests/app.js" defer></script>
 </head>
 
 <body>
-    
-    <header>
-        <h1>EcoFresh Grocers</h1>
 
-        <nav>
+<header class="site-header">
+    <div class="nav-wrap">
+
+        <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">EF</span>
+            <span>EcoFresh Grocers</span>
+        </a>
+
+        <button class="menu-toggle" type="button"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+            Menu
+        </button>
+
+        <nav class="site-nav" id="main-navigation"
+             aria-label="Main navigation">
             <a href="index.html">Home</a>
-            <a href="./Pages/about.html">About Us</a>
+            <a href="./Pages/about.html">About us</a>
+            <a href="./Pages/products and services.html">Products &amp; services</a>
+            <a href="./Pages/enquiry.html">Enquiries</a>
             <a href="./Pages/contact.html">Contact</a>
-            <a href="./Pages/enquiry.html">Enquiry</a>
-            <a href="./Pages/products and services.html">Product & Services</a>
         </nav>
 
-    </header>
+    </div>
+</header>
 
-    <main>
-        <section class="sitemap">
-            <h2>Website Sitemap</h2>
-            <ul class="sitemap-list">
-                <li>
-                    <a href="index.html"> Home</a>
-                </li>
+<main id="main-content">
 
-                <li>
-                    <a href="./Pages/about.html">About Us</a>
-                </li>
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Explore our website</span>
+            <h1>Website Sitemap</h1>
+            <p class="muted">
+                Find the main sections and pages of EcoFresh Grocers.
+            </p>
+        </div>
+    </section>
 
-                <li>
-                    <a href="./Pages/products and services.html">Products & Services</a>
-                </li>
+    <section class="section">
+        <div class="container">
 
-                <li>
-                    <a href="./Pages/contact.html">Contact</a>
-                </li>
+            <div class="card">
+                <h2>Main website pages</h2>
 
-                <li>
-                    <a href="./Pages/enquiry.html">Enquiry</a>
-                </li>
+                <ul class="sitemap-list">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <p>Discover EcoFresh Grocers and its main features.</p>
+                    </li>
 
-            </ul>
+                    <li>
+                        <a href="./Pages/about.html">About us</a>
+                        <p>Learn about the business, its story and values.</p>
+                    </li>
 
-        </section>
+                    <li>
+                        <a href="./Pages/products and services.html">
+                            Products and services
+                        </a>
+                        <p>Browse the product catalogue and service information.</p>
+                    </li>
 
-    </main>
+                    <li>
+                        <a href="./Pages/enquiry.html">Enquiries</a>
+                        <p>Submit questions about products and services.</p>
+                    </li>
 
-    <footer>
-        <p>&copy; 2026 EcoFresh Grocers</p>
-    </footer>
-    
+                    <li>
+                        <a href="./Pages/contact.html">Contact</a>
+                        <p>Find contact information and the approximate location.</p>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div>
+            <a class="brand" href="index.html" style="color:#fff">
+                <span class="brand-mark" aria-hidden="true">EF</span>
+                <span>EcoFresh Grocers</span>
+            </a>
+            <p>Fresh choices. Local roots. Better everyday living.</p>
+        </div>
+
+        <div>
+            <strong>Explore</strong>
+            <p>
+                <a href="./Pages/products and services.html">Products</a> ·
+                <a href="./Pages/enquiry.html">Make an enquiry</a> ·
+                <a href="./Pages/contact.html">Contact us</a>
+            </p>
+            <small>
+                © <span id="year">2026</span> EcoFresh Grocers.
+            </small>
+        </div>
+
+    </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="Back to top">
+    Top
+</button>
+
 </body>
 </html>

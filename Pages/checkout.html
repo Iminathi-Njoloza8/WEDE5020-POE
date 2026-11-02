@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Review your EcoFresh Grocers shopping cart and complete a demonstration checkout.">
+    <meta name="robots" content="index,follow">
+    <title>Shopping cart and checkout | EcoFresh Grocers</title>
+    <link rel="stylesheet" href="../Assests/styles.css">
+    <script src="../Assests/app.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav-wrap">
+        <a class="brand" href="../index.html">
+            <span class="brand-mark" aria-hidden="true">EF</span>
+            <span>EcoFresh Grocers</span>
+        </a>
+
+        <button class="menu-toggle" type="button"
+                aria-expanded="false"
+                aria-controls="main-navigation">
+            Menu
+        </button>
+
+        <nav class="site-nav" id="main-navigation"
+             aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About us</a>
+            <a href="products and services.html">Products &amp; services</a>
+            <a href="enquiry.html">Enquiries</a>
+            <a href="contact.html">Contact</a>
+            <a href="checkout.html" aria-current="page">
+                Shopping cart
+                <span class="cart-count">0</span>
+            </a>
+        </nav>
+    </div>
+</header>
+
+<main id="main-content">
+
+    <section class="page-hero">
+        <div class="container">
+            <span class="eyebrow">Your basket</span>
+            <h1>Shopping cart and checkout</h1>
+            <p>
+                Review your items, enter delivery details and
+                complete the simulated payment for this
+                website demonstration.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container checkout-layout">
+
+            <!-- SHOPPING CART -->
+            <section class="checkout-panel"
+                     aria-labelledby="cart-heading">
+
+                <h2 id="cart-heading">Your order</h2>
+
+                <div id="checkoutCart"
+                     class="checkout-cart"
+                     aria-live="polite">
+                    <p>
+                        Your cart is currently empty.
+                        Visit the
+                        <a href="products and services.html">
+                            products page
+                        </a>
+                        to add items.
+                    </p>
+                </div>
+
+                <div class="checkout-total-row">
+                    <strong>Subtotal</strong>
+                    <strong id="cartSubtotal">R 0.00</strong>
+                </div>
+
+                <div class="checkout-total-row">
+                    <span>Delivery</span>
+                    <span id="deliveryCost">R 0.00</span>
+                </div>
+
+                <div class="checkout-total-row checkout-grand-total">
+                    <strong>Total</strong>
+                    <strong id="cartTotal">R 0.00</strong>
+                </div>
+
+                <p class="checkout-note">
+                    Delivery is shown as R0.00 for this
+                    demonstration.
+                </p>
+            </section>
+
+            <!-- CUSTOMER DETAILS -->
+            <section class="checkout-panel"
+                     aria-labelledby="details-heading">
+
+                <h2 id="details-heading">
+                    Customer and delivery details
+                </h2>
+
+                <form id="checkoutForm"
+                      class="checkout-form"
+                      novalidate>
+
+                    <div class="field">
+                        <label for="customerName">Full name</label>
+                        <input id="customerName"
+                               name="customerName"
+                               autocomplete="name"
+                               required>
+                    </div>
+
+                    <div class="field">
+                        <label for="customerEmail">
+                            Email address
+                        </label>
+                        <input id="customerEmail"
+                               name="customerEmail"
+                               type="email"
+                               autocomplete="email"
+                               required>
+                    </div>
+
+                    <div class="field">
+                        <label for="customerPhone">
+                            Contact number
+                        </label>
+                        <input id="customerPhone"
+                               name="customerPhone"
+                               type="tel"
+                               autocomplete="tel"
+                               required>
+                    </div>
+
+                    <div class="field">
+                        <label for="deliveryAddress">
+                            Delivery address
+                        </label>
+                        <textarea id="deliveryAddress"
+                                  name="deliveryAddress"
+                                  autocomplete="street-address"
+                                  required></textarea>
+                    </div>
+
+                    <div class="field">
+                        <label for="deliveryArea">
+                            Town / suburb
+                        </label>
+                        <input id="deliveryArea"
+                               name="deliveryArea"
+                               required>
+                    </div>
+
+                    <div class="field">
+                        <label for="paymentMethod">
+                            Payment method
+                        </label>
+
+                        <select id="paymentMethod"
+                                name="paymentMethod"
+                                required>
+                            <option value="">
+                                Choose a payment method
+                            </option>
+                            <option value="card-demo">
+                                Bank card (simulated)
+                            </option>
+                            <option value="eft-demo">
+                                EFT / bank transfer (simulated)
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="demo-payment-warning" role="note">
+                        <strong>Impotant Notice:</strong>
+                        Please make sure the bank details added 
+                        here are correct and correlate with the 
+                        your current bank card..
+                    </div>
+
+                    <label class="checkout-consent">
+                        <input type="checkbox"
+                               id="confirmDemo"
+                               required>
+                        I confirm that the bank details added here are correct.
+                    </label>
+
+                    <button type="submit"
+                            class="button checkout-submit">
+                        Place order
+                    </button>
+
+                    <p id="checkoutStatus"
+                       class="form-status"
+                       role="status"
+                       aria-live="polite">
+                    </p>
+
+                </form>
+
+                <!-- ORDER CONFIRMATION -->
+                <section id="orderConfirmation"
+                         class="order-confirmation"
+                         hidden
+                         aria-live="polite">
+
+                    <h2>Order confirmed</h2>
+
+                    <p id="confirmationMessage"></p>
+
+                    <p>
+                        This confirms that you have ordered 
+                        at EcoFresh Grocers. You will recieve 
+                        an email shortly where you can track your order.
+                    </p>
+
+                    <button type="button"
+                            id="printOrder"
+                            class="button btn-outline">
+                        Print order summary
+                    </button>
+
+                    <a class="button"
+                       href="products and services.html">
+                        Continue shopping
+                    </a>
+
+                </section>
+
+            </section>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-grid">
+
+        <div>
+            <a class="brand" href="../index.html"
+               style="color:#fff">
+                <span class="brand-mark" aria-hidden="true">EF</span>
+                <span>EcoFresh Grocers</span>
+            </a>
+
+            <p>Fresh choices. Local roots. Better everyday living.</p>
+        </div>
+
+        <div>
+            <strong>Explore</strong>
+            <p>
+                <a href="products and services.html">Products</a>
+                ·
+                <a href="contact.html">Contact us</a>
+            </p>
+            <small>
+                © <span id="year">2026</span> EcoFresh Grocers.
+            </small>
+        </div>
+
+    </div>
+</footer>
+
+<button class="back-top" type="button"
+        aria-label="Back to top">
+    Top
+</button>
+
+</body>
+</html>
